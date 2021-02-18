@@ -1,5 +1,9 @@
 import bluetooth as bt
 from src.config import ANDROID_SOCKET_BUFFER_SIZE, LOCALE, RFCOMM_CHANNEL, UUID
+'''
+from src.config import ANDROID_SOCKET_BUFFER_SIZE, LOCALE, RFCOMM_CHANNEL, UUID
+'''
+
 
 
 '''
