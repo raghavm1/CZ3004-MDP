@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- When selected, use stop -->
+    <item android:drawable="@drawable/stopbutton"
+        android:state_checked="true" />
+    <!-- When not selected, use play-->
+    <item android:drawable="@drawable/playbutton"
+        android:state_checked="false"/>
+
+</selector>

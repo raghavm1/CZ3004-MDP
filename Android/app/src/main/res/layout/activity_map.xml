@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="-115dp"
+        tools:layout_editor_absoluteY="81dp">
+
+
+        <Button
+            android:id="@+id/updateMapBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="18dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="16dp"
+            android:clickable="true"
+            android:text="UPDATE"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toEndOf="@+id/resetMapBtn"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/resetMapBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="56dp"
+            android:layout_marginLeft="56dp"
+            android:layout_marginTop="16dp"
+
+            android:clickable="true"
+            android:text="RESET"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/exploredImgBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="64dp"
+            android:layout_marginLeft="64dp"
+            android:layout_marginTop="28dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/add"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/setStartPointToggleBtn" />
+
+        <ImageButton
+            android:id="@+id/obstaclesImgBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="100dp"
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="28dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/block"
+            app:layout_constraintStart_toEndOf="@+id/exploredImgBtn"
+            app:layout_constraintTop_toBottomOf="@+id/setStartPointToggleBtn" />
+
+        <ImageButton
+            android:id="@+id/clearImgBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="112dp"
+            android:layout_marginLeft="112dp"
+            android:layout_marginTop="28dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/delete"
+            app:layout_constraintStart_toEndOf="@+id/obstaclesImgBtn"
+            app:layout_constraintTop_toBottomOf="@+id/setWayPointToggleBtn" />
+
+        <ImageButton
+            android:id="@+id/changeDirectionImgBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="112dp"
+            android:layout_marginLeft="112dp"
+            android:layout_marginTop="28dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/direction"
+            app:layout_constraintStart_toEndOf="@+id/clearImgBtn"
+            app:layout_constraintTop_toBottomOf="@+id/setWayPointToggleBtn" />
+
+<!--        <Switch-->
+<!--            android:id="@+id/manualAutoToggleBtn"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="64dp"-->
+<!--            android:layout_marginLeft="64dp"-->
+<!--            android:layout_marginTop="24dp"-->
+<!--            android:text="MANUAL"-->
+<!--            android:textColor="@color/dark_green"-->
+<!--            android:textOff="@string/manual"-->
+<!--            android:textOn="@string/auto"-->
+<!--            android:textSize="20sp"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent" />-->
+
+
+        <TextView
+            android:id="@+id/exploredTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="36dp"
+            android:layout_marginLeft="36dp"
+            android:layout_marginTop="10dp"
+            android:text="Add Explored Cell"
+            android:textColor="@color/dark_green"
+            android:textSize="12dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/exploredImgBtn" />
+
+        <TextView
+            android:id="@+id/blockTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="56dp"
+            android:layout_marginLeft="56dp"
+            android:layout_marginTop="10dp"
+            android:text="Add Blocked Cell"
+            android:textColor="@color/dark_green"
+            android:textSize="12dp"
+            app:layout_constraintStart_toEndOf="@+id/exploredTextView"
+            app:layout_constraintTop_toBottomOf="@+id/obstaclesImgBtn" />
+
+        <TextView
+            android:id="@+id/clearTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="72dp"
+            android:layout_marginLeft="72dp"
+            android:layout_marginTop="10dp"
+            android:text="Remove Cell"
+            android:textColor="@color/dark_green"
+            android:textSize="12dp"
+            app:layout_constraintStart_toEndOf="@+id/blockTextView"
+            app:layout_constraintTop_toBottomOf="@+id/clearImgBtn" />
+
+        <TextView
+            android:id="@+id/changeDirectionTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:text="Change Robot Direction"
+            android:textColor="@color/dark_green"
+            android:textSize="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/clearTextView"
+            app:layout_constraintTop_toBottomOf="@+id/changeDirectionImgBtn" />
+
+
+        <ToggleButton
+            android:id="@+id/setStartPointToggleBtn"
+            android:layout_width="210dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="56dp"
+            android:layout_marginLeft="56dp"
+            android:layout_marginTop="72dp"
+            android:background="@drawable/toggle_button_selector"
+            android:textColor="@color/white"
+            android:textOff="SET START POINT"
+            android:textOn="CANCEL"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ToggleButton
+            android:id="@+id/setWayPointToggleBtn"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/toggle_button_selector"
+            android:textColor="@color/white"
+            android:textOff="SET WAY POINT"
+            android:textOn="CANCEL"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.551"
+            app:layout_constraintStart_toEndOf="@+id/setStartPointToggleBtn"
+            app:layout_constraintTop_toBottomOf="@+id/resetMapBtn" />
+
+        <!--        <View-->
+        <!--            android:id="@+id/horizontalLineOneMap"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="1dp"-->
+        <!--            android:layout_marginBottom="92dp"-->
+        <!--            android:background="@color/dark_green"-->
+        <!--            app:layout_constraintBottom_toTopOf="@+id/horizontalLineTwoMap"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintHorizontal_bias="0.0"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toTopOf="parent"-->
+        <!--            app:layout_constraintVertical_bias="1.0" />-->
+
+        <!--        <View-->
+        <!--            android:id="@+id/horizontalLineTwoMap"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="1dp"-->
+        <!--            android:layout_marginBottom="740dp"-->
+        <!--            android:background="@color/dark_green"-->
+        <!--            app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintHorizontal_bias="0.0"-->
+        <!--            app:layout_constraintStart_toStartOf="parent" />-->
+
+        <!--        <View-->
+        <!--                    android:id="@+id/verticalLineOneMap"-->
+        <!--                    android:layout_width="1dp"-->
+        <!--                    android:layout_height="90dp"-->
+        <!--                    android:layout_marginEnd="148dp"-->
+        <!--                    android:layout_marginRight="148dp"-->
+        <!--                    android:background="@color/dark_green"-->
+        <!--                    app:layout_constraintBottom_toTopOf="@+id/horizontalLineTwoMap"-->
+        <!--                    app:layout_constraintEnd_toEndOf="parent"-->
+        <!--                    app:layout_constraintTop_toTopOf="@+id/horizontalLineOneMap"-->
+        <!--                    app:layout_constraintVertical_bias="0.0" />-->
+
+        <!--        <View-->
+        <!--            android:id="@+id/verticalLineTwoMap"-->
+        <!--            android:layout_width="1dp"-->
+        <!--            android:layout_height="90dp"-->
+        <!--            android:layout_marginEnd="152dp"-->
+        <!--            android:layout_marginRight="152dp"-->
+        <!--            android:background="@color/dark_green"-->
+        <!--            app:layout_constraintBottom_toTopOf="@+id/horizontalLineTwoMap"-->
+        <!--            app:layout_constraintEnd_toEndOf="@+id/verticalLineOneMap"-->
+        <!--            app:layout_constraintTop_toTopOf="@+id/horizontalLineOneMap"-->
+        <!--            app:layout_constraintVertical_bias="1.0" />-->
+
+        <!--        <View-->
+        <!--                    android:id="@+id/verticalLineThreeMap"-->
+        <!--                    android:layout_width="1dp"-->
+        <!--                    android:layout_height="90dp"-->
+        <!--                    android:layout_marginEnd="152dp"-->
+        <!--                    android:layout_marginRight="152dp"-->
+        <!--                    android:background="@color/dark_green"-->
+        <!--                    app:layout_constraintBottom_toTopOf="@+id/horizontalLineTwoMap"-->
+        <!--                    app:layout_constraintEnd_toEndOf="@+id/verticalLineTwoMap"-->
+        <!--                    app:layout_constraintTop_toTopOf="@+id/horizontalLineOneMap"-->
+        <!--                    app:layout_constraintVertical_bias="0.0" />-->
+
+        <TableRow
+            android:id="@+id/hl"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="16dp"
+            android:background="@color/dark_green"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/setStartPointToggleBtn"
+            app:layout_constraintVertical_bias="0.0"
+            tools:layout_editor_absoluteX="0dp"></TableRow>
+
+        <TableRow
+            android:id="@+id/vl"
+            android:layout_width="1dp"
+            android:layout_height="200dp"
+            android:layout_marginStart="156dp"
+            android:layout_marginLeft="156dp"
+            android:background="@color/dark_green"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/hl"
+            app:layout_constraintVertical_bias="0.0"></TableRow>
+
+        <TableRow
+            android:id="@+id/vl2"
+            android:layout_width="1dp"
+            android:layout_height="200dp"
+            android:layout_marginStart="150dp"
+            android:layout_marginLeft="156dp"
+            android:background="@color/dark_green"
+            app:layout_constraintStart_toEndOf="@+id/vl"
+            app:layout_constraintTop_toBottomOf="@+id/hl"></TableRow>
+
+        <TableRow
+            android:id="@+id/vl3"
+            android:layout_width="1dp"
+            android:layout_height="200dp"
+            android:background="@color/dark_green"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/vl2"
+            app:layout_constraintTop_toTopOf="@+id/vl2"></TableRow>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

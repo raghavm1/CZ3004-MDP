@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageButton
+        android:id="@+id/forwardImgBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="72dp"
+        android:layout_marginLeft="72dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="302dp"
+        android:layout_marginRight="302dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintEnd_toStartOf="@+id/rightImgBtn"
+        app:layout_constraintHorizontal_bias="0.165"
+        app:layout_constraintStart_toEndOf="@+id/leftImgBtn"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/tankup" />
+
+    <ImageButton
+        android:id="@+id/backImgBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="110dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/rightImgBtn"
+        app:layout_constraintHorizontal_bias="0.484"
+        app:layout_constraintStart_toEndOf="@+id/leftImgBtn"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.11"
+        app:srcCompat="@drawable/tankdown" />
+
+    <ImageButton
+        android:id="@+id/rightImgBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="30dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.16"
+
+        app:layout_constraintStart_toEndOf="@+id/leftImgBtn"
+        app:layout_constraintTop_toBottomOf="@+id/forwardImgBtn"
+        app:srcCompat="@drawable/tankright" />
+
+    <ImageButton
+        android:id="@+id/leftImgBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/forwardImgBtn"
+        app:srcCompat="@drawable/tankleft" />
+
+    <Switch
+        android:id="@+id/phoneTiltSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:splitTrack="false"
+        android:text="TILT OFF"
+        android:textColor="@color/dark_green"
+        android:textSize="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.002"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/backImgBtn" />
+
+    <Button
+        android:id="@+id/calibrateBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginTop="8dp"
+        android:clickable="true"
+        android:text="Calibrate"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toStartOf="@+id/horizontalLineControl"
+        app:layout_constraintStart_toEndOf="@+id/phoneTiltSwitch"
+        app:layout_constraintTop_toBottomOf="@+id/backImgBtn" />
+
+    <View
+        android:id="@+id/verticalLineControl"
+        android:layout_width="1dp"
+        android:layout_height="500dp"
+        android:background="@color/dark_green"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.122"
+        app:layout_constraintStart_toEndOf="@+id/rightImgBtn"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/horizontalLineControl"
+        android:layout_width="500dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/dark_green"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/verticalLineControl"
+        app:layout_constraintTop_toBottomOf="@+id/fastestPathTimeTextView"
+        app:layout_constraintVertical_bias="0.045" />
+
+    <TextView
+        android:id="@+id/fastestPathTitleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="Fastest Path"
+        android:textColor="@color/dark_green"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.461"
+        app:layout_constraintStart_toStartOf="@+id/verticalLineControl"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ToggleButton
+        android:id="@+id/fastestPathToggleBtn"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="60dp"
+        android:layout_marginLeft="60dp"
+        android:background="@drawable/check_play_toggle"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:text="FASTEST"
+        android:textColor="#00000000"
+        android:textOff="FASTEST"
+        android:textOn="STOP"
+        android:layout_marginBottom="5dp"
+        app:layout_constraintBottom_toTopOf="@+id/horizontalLineControl"
+        app:layout_constraintStart_toEndOf="@+id/rightImgBtn"
+        app:layout_constraintTop_toBottomOf="@+id/fastestPathTitleTextView"
+        app:layout_constraintVertical_bias="0.517" />
+
+    <TextView
+        android:id="@+id/fastestPathTimeTextView"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/rectangle_border"
+        android:gravity="center"
+        android:text="00:00"
+        android:textSize="26sp"
+        app:layout_constraintStart_toEndOf="@+id/fastestPathToggleBtn"
+        app:layout_constraintTop_toBottomOf="@+id/fastestPathTitleTextView" />
+
+    <ImageButton
+        android:id="@+id/fastestPathResetImgBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="28dp"
+        android:layout_marginTop="8dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.232"
+        app:layout_constraintStart_toEndOf="@+id/fastestPathTimeTextView"
+        app:layout_constraintTop_toBottomOf="@+id/fastestPathTitleTextView"
+        app:layout_constraintVertical_bias="0.052"
+        app:srcCompat="@drawable/reload" />
+
+    <TextView
+        android:id="@+id/explorationTitleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Exploration"
+        android:textColor="@color/dark_green"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.48"
+        app:layout_constraintStart_toStartOf="@+id/verticalLineControl"
+        app:layout_constraintTop_toBottomOf="@+id/horizontalLineControl" />
+
+    <ToggleButton
+        android:id="@+id/explorationToggleBtn"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/check_play_toggle"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:text="Exploration"
+        android:textColor="#00000000"
+        android:textOff="EXPLORE"
+        android:textOn="STOP"
+        app:layout_constraintStart_toStartOf="@+id/horizontalLineControl"
+        app:layout_constraintTop_toBottomOf="@+id/explorationTitleTextView" />
+
+    <TextView
+        android:id="@+id/explorationTimeTextView"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/rectangle_border"
+        android:gravity="center"
+        android:text="00:00"
+        android:textSize="26sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.025"
+        app:layout_constraintStart_toEndOf="@+id/explorationToggleBtn"
+        app:layout_constraintTop_toBottomOf="@+id/explorationTitleTextView" />
+
+    <ImageButton
+        android:id="@+id/explorationResetImgBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.232"
+        app:layout_constraintStart_toEndOf="@+id/explorationTimeTextView"
+        app:layout_constraintTop_toBottomOf="@+id/explorationTitleTextView"
+        app:srcCompat="@drawable/reload" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
