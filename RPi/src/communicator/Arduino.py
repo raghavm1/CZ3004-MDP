@@ -83,4 +83,4 @@ if __name__ == '__main__':
     A.read()
     message = "Hello Arduino"
     A.write(message)
-    print("Android script succesfully ran.")
+    print("Arduino script succesfully ran.")

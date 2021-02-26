@@ -1,9 +1,4 @@
 import socket
-'''
-from config import LOCALE, ALGORITHM_SOCKET_BUFFER_SIZE, WIFI_IP, WIFI_PORT
-'''
-
-import socket
 
 from src.config import LOCALE, ALGORITHM_SOCKET_BUFFER_SIZE, WIFI_IP, WIFI_PORT
 
@@ -42,7 +37,7 @@ class Algorithm:
                     print('Successfully connected with Algorithm: ' + str(self.address))
                     retry = False
                     print(retry)
-
+                
             except Exception as error:
                 print('Connection with Algorithm failed: ' + str(error))
 
@@ -100,23 +95,21 @@ class Algorithm:
         try:
             print('To Algorithm:')
             print(message)
-            self.client_sock.send(message.encode())
+            #self.client_sock.send(message.encode())
+            self.client_sock(message)
 
         except Exception as error:
             print('Algorithm write failed: ' + str(error))
             raise error
 
-
 if __name__ == '__main__':
     message = "Hello from Rpi"
     A = Algorithm()
     A.connect()
-    print("Connection is successful")
+    print("Connection is successful") 
     A.write(message)
     print("Message successfully sent")
     A.read()
     print("Message successfully receved")
-    #  Algorithm().write(message)
+  #  Algorithm().write(message)
     print("Algo script successfully ran.")
-
-
