@@ -38,6 +38,7 @@ class AndroidToAlgorithm:
     START_EXPLORATION = 'SE|'.encode()
     START_SHORTEST_PATH = 'SP|'.encode()
     SEND_ARENA = 'SendArena'.encode()
+    REQUEST_MDF = 'MDF|'.encode()
     
 
 
@@ -59,7 +60,7 @@ class AlgorithmToAndroid:
 
 class AlgorithmToRPi:
     TAKE_PICTURE = 'C'.encode()[0]
-    EXPLORATION_COMPLETE = 'D'.encode()
+    EXPLORATION_COMPLETE = 'N'.encode()
 
 
 class RPiToAndroid:
