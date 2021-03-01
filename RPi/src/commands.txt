@@ -6,8 +6,8 @@ Android > Arduino, "B1|", Move back
 Android > Arduino, "L1|", Turn left
 Android > Arduino, "W1|", Turn right
 Android > Arduino, "SC|", Sensor calibration (RPi send L|A| to Arduino)
-Android > Arduino, "S1|", Shortcut for some movement
-Android > Arduino, "S2|", Shortcut for some movement
+Android > Arduino, "F1|", Shortcut for some movement
+Android > Arduino, "F2|", Shortcut for some movement
 
 Android > Algo, "SE|", Start exploration (RPi send E| to Arduino)
 Android > Algo, "SP|", Shortest path (RPi send F| to Arduino)
