@@ -6,11 +6,15 @@
 #include "PID_v2.h"
 
 DualVNH5019MotorShield md;
-#define IRPin A3
 #define model 1
 
-// Create a new instance of the SharpIR class:
-SharpIR mySensor(IRPin, 1);
+//-----Sensor init-------/
+SharpIR sensor1(1, A0); 
+SharpIR sensor2(1, A1);
+SharpIR sensor3(3, A2);
+SharpIR sensor4(1, A3);
+SharpIR sensor5(1, A4);
+SharpIR sensor6(1, A5);
 
 //-----Motor 1 E1/M1-----/
 #define E1A_INPUT 3
@@ -63,7 +67,7 @@ float rkp = 1, rki = 0, rkd = 0.0029;
 float rerror = 0, rprev_error = 0, rsumError = 0;
 float r_speed = 0;
 
-double TURN_R = 11.00; //new bat pos 6.2V Batt A Albert PB // Bat B 8.56 // Bat A 8.58
+double TURN_R = 16.00; //new bat pos 6.2V Batt A Albert PB // Bat B 8.56 // Bat A 8.58
 double leftEncoderValue = 0;
 double rightEncoderValue = 0;
 double Setpoint, Input, Output;
@@ -112,7 +116,7 @@ void PID_computeR(float rpmR)
     r_speed += (rerror * rkp) + (rprev_error * rki) + (rsumError * rkd);
     rprev_error = rerror;
     rsumError = rsumError + rerror;
-    md.setM2Speed(r_speed);
+    md.setM2Speed(-r_speed);
 }
 
 void rotateRight(double angle)
@@ -122,7 +126,7 @@ void rotateRight(double angle)
     double target_Tick = 0;
 
     if (angle <= 90)
-        target_Tick = angle * TURN_R; //8.96
+        target_Tick = angle *TURN_R ; //8.96
     else if (angle <= 180)
         target_Tick = angle * 8.80; //tune 180
     else if (angle <= 360)
@@ -132,10 +136,10 @@ void rotateRight(double angle)
 
     while (rightEncoderValue < startRightEncoderValue + target_Tick)
     {
-        md.setSpeeds((200 + Output), -(200 - Output));
+        md.setSpeeds((350 + Output), -(350 - Output));
         myPID.Compute();
     }
-    md.setBrakes(400, 400);
+    md.setBrakes(350, 350);
     delay(5);
 }
 void leftEncoderInc(void)
@@ -149,10 +153,10 @@ void rightEncoderInc(void)
 }
 void setup()
 {
-    // put your setup code here, to run once:
+  Serial.begin(115200);
     pinMode(LEFT_ENCODER, INPUT);  //set digital pin 11 as input
     pinMode(RIGHT_ENCODER, INPUT); //set digital pin 3 as input
-    Serial.begin(115200);
+    
     Serial.println("Dual VNH5019 Motor Shield");
     md.init();
     attachPCINT(digitalPinToPCINT(RIGHT_ENCODER), rightEncoderInc, HIGH);
@@ -185,9 +189,26 @@ void loop()
     right_tick = pulseIn(E2A_INPUT, HIGH);
     rpmRight = ((1 / (2 * right_tick)) * pow(10, 6) * 60) / 562.25;
 
-    PID_computeL(rpmLeft);
-    PID_computeR(rpmRight);
+   // PID_computeL(rpmLeft);
+    //PID_computeR(rpmRight);
 
+    Serial.flush();
+    char a = Serial.read();
+
+    switch(a){
+      case 'w':{
+            PID_computeL(rpmLeft);
+          PID_computeR(rpmRight);
+        }
+          break;
+         case 'a':
+            //rotateLeft(90);
+            break;
+         case 'd':
+         rotateRight(90);
+            break;
+        
+    }
     Serial.print("rpmLeft: ");
     Serial.print(rpmLeft);
     Serial.print(" ");
@@ -196,19 +217,206 @@ void loop()
     Serial.print(" ");
     Serial.println("uT");
 
+
+    
+
     //rotateRight(90);
 
     //delay(10000);
+    //checkSensorDistance(1);
+    //checkSensorDistance(5);
+}
 
-    Serial.println("Distance is ");
-    Serial.print(mySensor.getDistance());
-    if (mySensor.getDistance() <= 15)
-    {
-        md.setBrakes(200, 200);
-        rotateRight(90);
+void checkSensorDistance_wo(int a){
+//  float arr[300];
+  md.setBrakes(200,200);
+  switch(a){
+    case 1:
+      Serial.println("Distance of PS1: ");
+        Serial.print(sensor1.getDistance());
+      
+      Serial.println();
+      break;
+    case 2:
+      Serial.println("Distance of PS2: ");
+        Serial.print(sensor2.getDistance());
+      Serial.println();
+      
+      break;
+    case 3:
+      Serial.println("Distance of PS3: ");
+        Serial.print(sensor3.getDistance());
+     Serial.println();
+      break;
+    case 4:
+      Serial.println("Distance of PS4: ");
+        Serial.print(sensor4.getDistance());
+      Serial.println();
+      
+      break;
+    case 5:
+      Serial.println("Distance of PS5: ");
+        Serial.print(sensor5.getDistance());
+      Serial.println();
+      
+      break;
+    case 6:
+      Serial.println("Distance of PS6: ");
+        Serial.print(sensor6.getDistance());
+      Serial.println();
+      
+      break;
+  }
+  delay(500);
+  
+}
+
+void checkSensorDistance(int a){
+  float arr[100];
+  md.setBrakes(200,200);
+  switch(a){
+    case 1:
+      for(int i = 0; i<100; i++){
+        arr[i] = sensor1.getDistance();
+      }
+      mergeSort(arr, 0, 99);
+      Serial.println("Distance of PS1: ");
+      Serial.print(arr[45]);
+            Serial.println();
+
+      break;
+    case 2:
+      for(int i = 0; i<100; i++){
+        arr[i] = sensor2.getDistance();
+      }
+      mergeSort(arr, 0, 99);
+      Serial.println("Distance of PS2: ");
+      Serial.print(arr[45]);
+            Serial.println();
+
+      break;
+    case 3:
+      for(int i = 0; i<100; i++){
+      arr[i] = sensor3.getDistance();
+      }
+      mergeSort(arr, 0, 99);
+      Serial.println("Distance of PS3: ");
+      Serial.print(arr[45]);
+            Serial.println();
+
+      break;
+    case 4:
+      for(int i = 0; i<100; i++){
+        arr[i] = sensor4.getDistance();
+      }
+      mergeSort(arr, 0, 99);
+      Serial.println("Distance of PS4: ");
+      Serial.print(arr[45]);
+            Serial.println();
+
+      break;
+    case 5:
+      for(int i = 0; i<100; i++){
+      arr[i] = sensor5.getDistance();
+      }
+      mergeSort(arr, 0, 99);
+      Serial.println("Distance of PS5: ");
+      Serial.print(arr[45]);
+            Serial.println();
+
+      break;
+    case 6:
+      for(int i = 0; i<100; i++){
+        arr[i] = sensor6.getDistance();
+      }
+      mergeSort(arr, 0, 99);
+      Serial.println("Distance of PS6: ");
+      Serial.print(arr[45]);
+            Serial.println();
+
+      break;
+  }
+  delay(500);
+  
+}
+
+void sensorTest(int angle)
+{
+    rotateRight(angle);
+    Serial.println("#################");
+    Serial.println("SensorTest distance: ");
+    Serial.print(sensor1.getDistance());
+
+    if(sensor1.getDistance() <= 15){
+      md.setBrakes(200,200);
+      delay(500);
+      rotateRight(90);
+      delay(100);
     }
+}
 
-    //rotateRight(180);
 
-    //delay(100);
+void merge(float arr[], int l, int m, int r)
+{
+    int i, j, k;
+    int n1 = m - l + 1;
+    int n2 = r - m;
+ 
+    /* create temp arrays */
+    float L[n1], R[n2];
+ 
+    /* Copy data to temp arrays L[] and R[] */
+    for (i = 0; i < n1; i++)
+        L[i] = arr[l + i];
+    for (j = 0; j < n2; j++)
+        R[j] = arr[m + 1 + j];
+ 
+    /* Merge the temp arrays back into arr[l..r]*/
+    i = 0; // Initial index of first subarray
+    j = 0; // Initial index of second subarray
+    k = l; // Initial index of merged subarray
+    while (i < n1 && j < n2) {
+        if (L[i] <= R[j]) {
+            arr[k] = L[i];
+            i++;
+        }
+        else {
+            arr[k] = R[j];
+            j++;
+        }
+        k++;
+    }
+ 
+    /* Copy the remaining elements of L[], if there
+    are any */
+    while (i < n1) {
+        arr[k] = L[i];
+        i++;
+        k++;
+    }
+ 
+    /* Copy the remaining elements of R[], if there
+    are any */
+    while (j < n2) {
+        arr[k] = R[j];
+        j++;
+        k++;
+    }
+}
+ 
+/* l is for left index and r is right index of the
+sub-array of arr to be sorted */
+void mergeSort(float arr[], int l, int r)
+{
+    if (l < r) {
+        // Same as (l+r)/2, but avoids overflow for
+        // large l and h
+        int m = l + (r - l) / 2;
+ 
+        // Sort first and second halves
+        mergeSort(arr, l, m);
+        mergeSort(arr, m + 1, r);
+ 
+        merge(arr, l, m, r);
+    }
 }
