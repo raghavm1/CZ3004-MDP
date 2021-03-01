@@ -95,6 +95,23 @@ public class MainActivity extends AppCompatActivity {
         editor.putString("connStatus", "Disconnected");
         editor.commit();
 
+        Button printMDFStringButton = (Button) findViewById(R.id.printMdfBtn);
+        printMDFStringButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String message = "Explored : " + GridMap.getPublicMDFExploration();
+                editor = sharedPreferences.edit();
+                editor.putString("message", CommsFragment.getMessageReceivedTextView().getText() + "\n" + message);
+                editor.commit();
+                refreshMessageReceived();
+                message = "Obstacle : " + GridMap.getPublicMDFObstacle() + "0";
+                showLog(message);
+                editor.putString("message", CommsFragment.getMessageReceivedTextView().getText() + "\n" + message);
+                editor.commit();
+                refreshMessageReceived();
+            }
+        });
+
         Switch manualAutoToggleBtn = findViewById(R.id.manualAutoToggleBtn);
         manualAutoToggleBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -105,8 +122,8 @@ public class MainActivity extends AppCompatActivity {
                         gridMap.setAutoUpdate(true);
                         autoUpdate = true;
                         gridMap.toggleCheckedBtn("None");
-                        MapTabFragment.getUpdateButton().setClickable(false);
-                        MapTabFragment.getUpdateButton().setTextColor(Color.GRAY);
+//                        MapTabFragment.getUpdateButton().setClickable(false);
+//                        MapTabFragment.getUpdateButton().setTextColor(Color.GRAY);
                         ControlsTabFragment.getCalibrateButton().setClickable(false);
                         ControlsTabFragment.getCalibrateButton().setTextColor(Color.GRAY);
                         manualAutoToggleBtn.setText("AUTO");
@@ -120,8 +137,8 @@ public class MainActivity extends AppCompatActivity {
                         gridMap.setAutoUpdate(false);
                         autoUpdate = false;
                         gridMap.toggleCheckedBtn("None");
-                        MapTabFragment.getUpdateButton().setClickable(true);
-                        MapTabFragment.getUpdateButton().setTextColor(Color.WHITE);
+//                        MapTabFragment.getUpdateButton().setClickable(true);
+//                        MapTabFragment.getUpdateButton().setTextColor(Color.WHITE);
                         ControlsTabFragment.getCalibrateButton().setClickable(true);
                         ControlsTabFragment.getCalibrateButton().setTextColor(Color.WHITE);
                         manualAutoToggleBtn.setText("MANUAL");

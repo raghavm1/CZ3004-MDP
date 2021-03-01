@@ -33,7 +33,7 @@ public class MapTabFragment extends Fragment {
 
     private PageViewModel pageViewModel;
 
-    Button resetMapBtn;
+    Button resetMapBtn, mdfButton;
     static Button updateButton;
     ImageButton directionChangeImageBtn, exploredImageBtn, obstacleImageBtn, clearImageBtn;
     ToggleButton setStartPointToggleBtn, setWaypointToggleBtn;
@@ -79,7 +79,8 @@ public class MapTabFragment extends Fragment {
         obstacleImageBtn = root.findViewById(R.id.obstaclesImgBtn);
         clearImageBtn = root.findViewById(R.id.clearImgBtn);
 //        manualAutoToggleBtn = root.findViewById(R.id.manualAutoToggleBtn);
-        updateButton = root.findViewById(R.id.updateMapBtn);
+        updateButton = root.findViewById(R.id.updateBtn);
+        mdfButton = root.findViewById(R.id.mdfBtn);
 
         // Button Listener
         resetMapBtn.setOnClickListener(new View.OnClickListener() {
@@ -224,7 +225,7 @@ public class MapTabFragment extends Fragment {
                 manualUpdateRequest = true;
                 showLog("Exiting updateButton");
                 try {
-                    String message = "{\"map\":[{\"explored\": \"ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff\",\"length\":300,\"obstacle\":\"00000000000000000706180400080010001e000400000000200044438f840000000000000080\"}]}";
+                    String message = "{\"map\":[{\"explored\": \"ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff\",\"length\":304,\"obstacle\":\"000000000000010042038400000000000000030C000000000000021F84000800000000000400\"}]}";
 
                     gridMap.setReceivedJsonObject(new JSONObject(message));
                     gridMap.updateMapInformation();
@@ -233,8 +234,21 @@ public class MapTabFragment extends Fragment {
                 }
             }
         });
+
+        mdfButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showLog("Clicked mdfButton");
+                MainActivity.printMessage("MDF|");
+            }
+        });
+
+
         return root;
     }
+
+
+
 
     private void showLog(String message) {
         Log.d(TAG, message);

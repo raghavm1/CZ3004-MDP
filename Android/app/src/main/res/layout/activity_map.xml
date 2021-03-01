@@ -14,82 +14,21 @@
         tools:layout_editor_absoluteY="81dp">
 
 
-        <Button
-            android:id="@+id/updateMapBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="18dp"
-            android:layout_marginLeft="24dp"
-            android:layout_marginTop="16dp"
-            android:clickable="true"
-            android:text="UPDATE"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toEndOf="@+id/resetMapBtn"
-            app:layout_constraintTop_toTopOf="parent" />
+<!--        <Button-->
+<!--            android:id="@+id/updateMapBtn"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="18dp"-->
+<!--            android:layout_marginLeft="24dp"-->
+<!--            android:layout_marginTop="16dp"-->
+<!--            android:clickable="true"-->
+<!--            android:text="UPDATE"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintHorizontal_bias="0.498"-->
+<!--            app:layout_constraintStart_toEndOf="@+id/resetMapBtn"-->
+<!--            app:layout_constraintTop_toTopOf="parent" />-->
 
-        <Button
-            android:id="@+id/resetMapBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="56dp"
-            android:layout_marginLeft="56dp"
-            android:layout_marginTop="16dp"
-
-            android:clickable="true"
-            android:text="RESET"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageButton
-            android:id="@+id/exploredImgBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="64dp"
-            android:layout_marginLeft="64dp"
-            android:layout_marginTop="28dp"
-            android:background="@android:color/transparent"
-            android:src="@drawable/add"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/setStartPointToggleBtn" />
-
-        <ImageButton
-            android:id="@+id/obstaclesImgBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="100dp"
-            android:layout_marginLeft="100dp"
-            android:layout_marginTop="28dp"
-            android:background="@android:color/transparent"
-            android:src="@drawable/block"
-            app:layout_constraintStart_toEndOf="@+id/exploredImgBtn"
-            app:layout_constraintTop_toBottomOf="@+id/setStartPointToggleBtn" />
-
-        <ImageButton
-            android:id="@+id/clearImgBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="112dp"
-            android:layout_marginLeft="112dp"
-            android:layout_marginTop="28dp"
-            android:background="@android:color/transparent"
-            android:src="@drawable/delete"
-            app:layout_constraintStart_toEndOf="@+id/obstaclesImgBtn"
-            app:layout_constraintTop_toBottomOf="@+id/setWayPointToggleBtn" />
-
-        <ImageButton
-            android:id="@+id/changeDirectionImgBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="112dp"
-            android:layout_marginLeft="112dp"
-            android:layout_marginTop="28dp"
-            android:background="@android:color/transparent"
-            android:src="@drawable/direction"
-            app:layout_constraintStart_toEndOf="@+id/clearImgBtn"
-            app:layout_constraintTop_toBottomOf="@+id/setWayPointToggleBtn" />
-
-<!--        <Switch-->
+            <!--        <Switch-->
 <!--            android:id="@+id/manualAutoToggleBtn"-->
 <!--            android:layout_width="wrap_content"-->
 <!--            android:layout_height="wrap_content"-->
@@ -105,90 +44,133 @@
 <!--            app:layout_constraintTop_toTopOf="parent" />-->
 
 
-        <TextView
-            android:id="@+id/exploredTextView"
+            <Button
+                android:id="@+id/resetMapBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="10dp"
+                android:clickable="true"
+                android:text="RESET"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.825"
+                app:layout_constraintStart_toEndOf="@+id/updateBtn"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/mdfBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="56dp"
+                android:layout_marginLeft="56dp"
+                android:layout_marginTop="10dp"
+                android:clickable="true"
+                android:text="MDF"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/updateBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="28dp"
+                android:layout_marginTop="10dp"
+                android:clickable="true"
+                android:text="UPDATE"
+                app:layout_constraintStart_toEndOf="@+id/mdfBtn"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:id="@+id/exploredImgBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="48dp"
+                android:layout_marginLeft="48dp"
+                android:layout_marginTop="18dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/add"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/setStartPointToggleBtn" />
+
+            <ImageButton
+                android:id="@+id/obstaclesImgBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="100dp"
+                android:layout_marginLeft="100dp"
+                android:layout_marginTop="18dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/block"
+                app:layout_constraintStart_toEndOf="@+id/exploredImgBtn"
+                app:layout_constraintTop_toBottomOf="@+id/setStartPointToggleBtn" />
+
+            <ImageButton
+            android:id="@+id/clearImgBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="36dp"
-            android:layout_marginLeft="36dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginStart="102dp"
+            android:layout_marginLeft="84dp"
+            android:layout_marginTop="18dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/delete"
+            app:layout_constraintStart_toEndOf="@+id/obstaclesImgBtn"
+            app:layout_constraintTop_toBottomOf="@+id/setStartPointToggleBtn" />
+
+        <ImageButton
+            android:id="@+id/changeDirectionImgBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="95dp"
+            android:layout_marginLeft="96dp"
+            android:layout_marginTop="18dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/direction"
+            app:layout_constraintStart_toEndOf="@+id/clearImgBtn"
+            app:layout_constraintTop_toBottomOf="@+id/setStartPointToggleBtn" />
+
+        <TextView
+            android:id="@+id/exploredTextView"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="28dp"
+            android:layout_marginLeft="28dp"
+            android:layout_marginTop="11dp"
             android:text="Add Explored Cell"
             android:textColor="@color/dark_green"
-            android:textSize="12dp"
+            android:textSize="13dp"
+            android:gravity="center"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/exploredImgBtn" />
 
         <TextView
             android:id="@+id/blockTextView"
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="56dp"
             android:layout_marginLeft="56dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="12dp"
             android:text="Add Blocked Cell"
             android:textColor="@color/dark_green"
-            android:textSize="12dp"
+            android:textSize="13dp"
+            android:gravity="center"
             app:layout_constraintStart_toEndOf="@+id/exploredTextView"
             app:layout_constraintTop_toBottomOf="@+id/obstaclesImgBtn" />
 
         <TextView
             android:id="@+id/clearTextView"
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="72dp"
-            android:layout_marginLeft="72dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginStart="48dp"
+            android:layout_marginLeft="48dp"
+            android:layout_marginTop="12dp"
+            android:gravity="center"
             android:text="Remove Cell"
             android:textColor="@color/dark_green"
-            android:textSize="12dp"
+            android:textSize="13dp"
             app:layout_constraintStart_toEndOf="@+id/blockTextView"
             app:layout_constraintTop_toBottomOf="@+id/clearImgBtn" />
 
-        <TextView
-            android:id="@+id/changeDirectionTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
-            android:text="Change Robot Direction"
-            android:textColor="@color/dark_green"
-            android:textSize="12dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/clearTextView"
-            app:layout_constraintTop_toBottomOf="@+id/changeDirectionImgBtn" />
-
-
-        <ToggleButton
-            android:id="@+id/setStartPointToggleBtn"
-            android:layout_width="210dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="56dp"
-            android:layout_marginLeft="56dp"
-            android:layout_marginTop="72dp"
-            android:background="@drawable/toggle_button_selector"
-            android:textColor="@color/white"
-            android:textOff="SET START POINT"
-            android:textOn="CANCEL"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ToggleButton
-            android:id="@+id/setWayPointToggleBtn"
-            android:layout_width="220dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/toggle_button_selector"
-            android:textColor="@color/white"
-            android:textOff="SET WAY POINT"
-            android:textOn="CANCEL"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.551"
-            app:layout_constraintStart_toEndOf="@+id/setStartPointToggleBtn"
-            app:layout_constraintTop_toBottomOf="@+id/resetMapBtn" />
 
         <!--        <View-->
         <!--            android:id="@+id/horizontalLineOneMap"-->
@@ -250,16 +232,62 @@
         <!--                    app:layout_constraintTop_toTopOf="@+id/horizontalLineOneMap"-->
         <!--                    app:layout_constraintVertical_bias="0.0" />-->
 
-        <TableRow
+        <TextView
+            android:id="@+id/changeDirectionTextView"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:gravity="center"
+            android:text="Change Robot Direction"
+            android:textColor="@color/dark_green"
+            android:textSize="13dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.83"
+            app:layout_constraintStart_toEndOf="@+id/clearTextView"
+            app:layout_constraintTop_toBottomOf="@+id/changeDirectionImgBtn" />
+
+            <ToggleButton
+                android:id="@+id/setStartPointToggleBtn"
+                android:layout_width="210dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="56dp"
+                android:layout_marginLeft="56dp"
+                android:layout_marginTop="65dp"
+                android:background="@drawable/toggle_button_selector"
+                android:textColor="@color/white"
+                android:textOff="SET START POINT"
+                android:textOn="CANCEL"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ToggleButton
+                android:id="@+id/setWayPointToggleBtn"
+                android:layout_width="220dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="65dp"
+                android:background="@drawable/toggle_button_selector"
+                android:textColor="@color/white"
+                android:textOff="SET WAY POINT"
+                android:textOn="CANCEL"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.625"
+                app:layout_constraintStart_toEndOf="@+id/setStartPointToggleBtn"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TableRow
             android:id="@+id/hl"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="10dp"
             android:background="@color/dark_green"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/setStartPointToggleBtn"
-            app:layout_constraintVertical_bias="0.0"
-            tools:layout_editor_absoluteX="0dp"></TableRow>
+            app:layout_constraintVertical_bias="0.0"></TableRow>
 
         <TableRow
             android:id="@+id/vl"
