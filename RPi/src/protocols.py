@@ -17,12 +17,12 @@ class Status:
 
 
 class AndroidToArduino:
-    MOVE_FORWARD = 'F1|'.encode()
+    MOVE_FORWARD = 'U1|'.encode()
     MOVE_BACK = 'B1|'.encode()
     TURN_LEFT = 'L1|'.encode()
-    TURN_RIGHT = 'R1|'.encode()
-    DO_SHORTCUT_1 = 'S1|'.encode()
-    DO_SHORTCUT_2 = 'S2|'.encode()
+    TURN_RIGHT = 'W1|'.encode()
+    DO_SHORTCUT_1 = 'F1|'.encode()
+    DO_SHORTCUT_2 = 'F2|'.encode()
 
     ALL_MESSAGES = [
         MOVE_FORWARD,
@@ -36,8 +36,9 @@ class AndroidToArduino:
 
 class AndroidToAlgorithm:
     START_EXPLORATION = 'SE|'.encode()
-    START_SHORTEST_PATH = 'SSP|'.encode()
+    START_SHORTEST_PATH = 'SP|'.encode()
     SEND_ARENA = 'SendArena'.encode()
+    
 
 
 class AndroidToRPi:
@@ -45,11 +46,11 @@ class AndroidToRPi:
 
 
 class AlgorithmToAndroid:
-    MOVE_FORWARD = 'F2'.encode()[0]
-    TURN_LEFT = 'L2'.encode()[0]
-    TURN_RIGHT = 'R2'.encode()[0]
-    CALIBRATING_CORNER = 'CC'.encode()[0]
-    SENSE_ALL = 'SA'.encode()[0]
+    MOVE_FORWARD = 'FS'.encode()[0]
+    TURN_LEFT = 'L'.encode()[0]
+    TURN_RIGHT = 'W'.encode()[0]
+    CALIBRATING_CORNER = 'C'.encode()[0]
+    SENSE_ALL = 'S'.encode()[0]
     ALIGN_RIGHT = 'AR'.encode()[0]
     ALIGN_FRONT = 'AF'.encode()[0]
 
@@ -86,5 +87,5 @@ class RPiToArduino:
 
 
 class RPiToAlgorithm:
-    DONE_TAKING_PICTURE = 'TP'.encode()
+    DONE_TAKING_PICTURE = 'D'.encode()
     DONE_IMG_REC = 'I'.encode()
