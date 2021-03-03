@@ -50,7 +50,6 @@ double checkSensorDistance(int param)
         sen6[count] = analogRead(A5);
       delay(10);
     }
-
     mergeSort(sen1, 0, 49);
     mergeSort(sen2, 0, 49);
     mergeSort(sen3, 0, 49);
@@ -63,20 +62,16 @@ double checkSensorDistance(int param)
     switch(param){
 
       case 1:{
-        distance = 12732*sen1[25] - 1.186;
+        distance = 40543*pow(sen1[25],-1.426);
       }break;
       
       case 2:{
-        //PS2
-    B = 87.12835168852241;
-    C = -0.007743254374094627;
-    A = 9.43768900416158;   
-    
     //distance2_new = 4709.1*pow(sen2[25], -0.974);
-    distance = A + B*exp(C*sen2[25]);
+    distance = 15936*pow(sen2[25],-1.219);
       }break;
       case 3:{
-        distance= 3;
+        distance= 31110*pow(sen3[25], -1.351);
+        if (distance > 10 && distance < 15) distance = distance + 1;
       }break;
       case 4:{
         distance=4;
@@ -90,7 +85,7 @@ double checkSensorDistance(int param)
         distance = 119.23*exp(-0.01*sen6[25]);
       }break;
 
-      return distance;
+      
       
         
     }
@@ -126,6 +121,7 @@ double checkSensorDistance(int param)
     Serial.println(sen3[25]);
     Serial.println(distance3_new);
    */
+   return distance;
 } 
 
 void merge(float arr[], int l, int m, int r)

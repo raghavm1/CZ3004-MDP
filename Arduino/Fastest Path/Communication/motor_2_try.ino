@@ -147,7 +147,8 @@ void rotateRight(float degree)
       // for 6.352V = 17.1 as of now
     // for battery A: 6.444V [as of 18th Feb] => 15.2
 
-    rotateDistance = ((15.2 * PI) / 360) * degree; //18.89distance travel for 1cm based on degree 18.9 best
+//Target_RPM = 140: Battery B, 6.404~6.462V, rkp = 15.9;
+    rotateDistance = ((15.3 * PI) / 360) * degree; //18.89distance travel for 1cm based on degree 18.9 best
 
     //lrAvgDistance = 0;
 
@@ -176,7 +177,9 @@ void rotateLeft(float degree)
     md.setSpeeds(-adjustedLeftSpeed, -adjustedRightSpeed);
     // for 6.38V = 17.25 as of now
     // for battery A: 6.444V [as of 18th Feb] => 17.25
-    rotateDistance = ((17.25 * PI) / 360) * degree; //18distance travel for 1cm based on degree 18.9 best
+    
+//Target_RPM = 140: Battery B, 6.462V, rkp = 16.8;
+    rotateDistance = ((15.8 * PI) / 360) * degree; //18distance travel for 1cm based on degree 18.9 best
 
     
    // lrAvgDistance = 0;
@@ -197,10 +200,10 @@ void rotateLeft(float degree)
 void move_10cm()
 {
 
-    calculate_Distance();
+   // calculate_Distance();
     double adjustedLeftSpeed = PID_computeL();
     double adjustedRightSpeed = PID_computeR();
-    md.setSpeeds(-adjustedLeftSpeed, adjustedRightSpeed);
+    md.setSpeeds(adjustedLeftSpeed, -adjustedRightSpeed);
 
     //if rotation distance exceeded, moving 100,110,120,130,140,150 = -7 of the value
     // lrAvgDistance to be 10
