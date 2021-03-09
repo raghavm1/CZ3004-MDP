@@ -1,9 +1,9 @@
-int sensorA0 = 0; // Proximity Sensor 1 on board - FRONT LEFT SENSOR.
+/*int sensorA0 = 0; // Proximity Sensor 1 on board - FRONT LEFT SENSOR.
 int sensorA1 = 0; // Proximity Sensor 2 on board - FRONT MIDDLE SENSOR.
 int sensorA2 = 0; // Proximity Sensor 3 on board - FRONT RIGHT SENSOR.
 int sensorA3 = 0; // Proximity Sensor 4 on board - RIGHT SIDE FRONT SENSOR.
 int sensorA4 = 0; // Proximity Sensor 5 on board - RIGHT SIDE BACK SENSOR.
-int sensorA5 = 0; // Proximity Sensor 6 on board - FACING LEFT LONG RANGE SENSOR.
+int sensorA5 = 0; // Proximity Sensor 6 on board - FACING LEFT LONG RANGE SENSOR.*/
 int count = 0;
 
 // Float variables to hold the voltage value of the sensor outputs.
@@ -48,7 +48,7 @@ double checkSensorDistance(int param)
         sen4[count] = analogRead(A3);
         sen5[count] = analogRead(A4);
         sen6[count] = analogRead(A5);
-      delay(10);
+      //delay(10);
     }
     mergeSort(sen1, 0, 49);
     mergeSort(sen2, 0, 49);
@@ -62,23 +62,29 @@ double checkSensorDistance(int param)
     switch(param){
 
       case 1:{
-        distance = 40543*pow(sen1[25],-1.426);
+        //distance = 40543*pow(sen1[25],-1.426);
+        distance = 28788*pow(sen1[25],-1.383 );//28788x-1.373
+
       }break;
       
       case 2:{
     //distance2_new = 4709.1*pow(sen2[25], -0.974);
-    distance = 15936*pow(sen2[25],-1.219);
+        distance = 15936*pow(sen2[25], -1.219); //15592x^-1.233
+
+    //distance = 15936*pow(sen2[25],-1.219);
       }break;
       case 3:{
-        distance= 31110*pow(sen3[25], -1.351);
-        if (distance > 10 && distance < 15) distance = distance + 1;
+        //distance= 31110*pow(sen3[25], -1.351);
+        distance = 31110*pow(sen3[25], -1.351); //846642x^-1.931
+
       }break;
       case 4:{
-        distance=4;
+        //24560x-1.335
+        distance = 24560*pow(sen4[25],-1.335);
       }break;
       case 5:{
-        
-        distance = 23297*sen5[25] - 1.317;
+        //67.571e-0.005x
+        distance = 67.571*exp(-0.005*sen5[25]);
       }break;
       case 6:{
         //PS6

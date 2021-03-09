@@ -1,8 +1,6 @@
 #include <Arduino.h>
 #include "DualVNH5019MotorShield.h"
 #include "EnableInterrupt.h"
-#include "Math.h"
-#include "SharpIR.h"
 DualVNH5019MotorShield md;
 
 //-----Motor 1 E1/M1-----/
@@ -14,12 +12,12 @@ DualVNH5019MotorShield md;
 #define E2B_INPUT 13
 
 //-----Sensor initialisation-------/
-SharpIR sensor1(1, A0);
+/*SharpIR sensor1(1, A0);
 SharpIR sensor2(1, A1);
 SharpIR sensor3(1, A2);
 SharpIR sensor4(1, A3);
 SharpIR sensor5(1, A4);
-SharpIR sensor6(3, A5);
+SharpIR sensor6(3, A5);*/
 
 // -- For reading input Code -----/
 double sensor_diff = 0;
@@ -196,7 +194,7 @@ void loop()
     if (Serial.available())
     {
       readChar = Serial.read();
-      if (isAlphaNumeric(readChar) or readChar == '|')
+      if (isAlphaNumeric(readChar) || readChar == '|')
       {
         piCommand_buffer[i] = readChar;
         i++;
