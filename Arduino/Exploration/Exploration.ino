@@ -349,7 +349,6 @@ void alignRight()
   double back_r = checkSensorDistance(5);
 
   sensor_diff = abs(front_r - back_r);
-
   if ((front_r > 11) || (back_r > 11))
   {
     return;

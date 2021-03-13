@@ -21,7 +21,7 @@ SharpIR sensor6(3, A5);*/
 
 // -- For reading input Code -----/
 double sensor_diff = 0;
-char piCommand_buffer[512], readChar, instruction, flushChar;
+char piCommand_buffer[256], readChar, instruction, flushChar; //buffer size halved to 256
 int arg;
 String fromAlgo = "";
 String singleCommand = "";
@@ -121,8 +121,10 @@ volatile long E2_counts2 = 0; //right
 float leftDistance = 0;
 float rightDistance = 0;
 float lrAvgDistance = 0;
-#define PI 3.14159265359
+//#define PI 3.14159265359
 float rotateDistance = 0;
+
+boolean isExploration = false, forward_error = false;
 
 //---Stop if fault default function------/
 void stopIfFault()
@@ -158,10 +160,9 @@ void setup()
   Serial.begin(115200);
 
   //[NEW]
-  // Serial.setTimeout(0);
+  Serial.setTimeout(0);
 
   md.init();
-
   pinMode(E1A_INPUT, INPUT); // Motor 1 (E1)
   pinMode(E2A_INPUT, INPUT); // Motor 2 (E2)
 
@@ -183,10 +184,10 @@ void loop()
 {
   int buffer_size = sizeof(piCommand_buffer) / sizeof(*piCommand_buffer);
 
-  Serial.println(buffer_size);
+  //  Serial.println(buffer_size);
 
   j = 0, arg = 0;
-
+  char ins;
   // type character for command
   // for forward & backward, type F or B with distance / 10
   while (1)
@@ -196,39 +197,54 @@ void loop()
       readChar = Serial.read();
       if (isAlphaNumeric(readChar) || readChar == '|')
       {
+        //Serial.println(readChar);
         piCommand_buffer[i] = readChar;
+        
         i++;
-
+        Serial.println(readChar);
+        //Serial.print("next buffer value is ");
+        //Serial.println(piCommand_buffer[i]);
         if (readChar == '#')
         {
           return;
         }
 
-        if (readChar == '|' || i >= buffer_size)
+        else if(readChar - '0' >= 1 && readChar - '0' <=9){
+          arg = readChar - '0';
+          
+        }
+
+        else if (readChar == '|' || i >= buffer_size)
         {
-          i = 1;
+          i = i+2;  //original is i = 1
           break;
         }
+        else if(isAlpha(readChar)) ins = readChar;
       }
     }
   }
 
+  instruction = ins;  //[ORIGINAL] : piCommand_buffer[0]
+ // Serial.println(instruction);
+ Serial.println("#######");
+ Serial.println(instruction);
   // multiply distance argument by 10
-  while (piCommand_buffer[j] != '|' && j < buffer_size)
+  /*while (piCommand_buffer[j] != '|' && j < buffer_size)
   {
     // subtract from ASCII value to get equivalent integer value
-    arg = arg + (piCommand_buffer[i] - 48);
-    arg *= 10;
+    //arg = arg + (piCommand_buffer[i] - 48);
+    //arg *= 10;
     j++;
-  }
-
+    
+  }*/
+  //Serial.println(arg);
   motionSwitch(instruction, arg);
+  getSensorValues();
 }
 
 void motionSwitch(char input, int rep)
 {
   //int len_command = input.length();
-  //Serial.print(input);
 
   //Serial.print("REP is ");
   //Serial.println(rep);
@@ -285,6 +301,22 @@ void motionSwitch(char input, int rep)
   case 'C':
     alignFront();
     break;
+  case 'E':
+    isExploration = true;
+    break;
+  }
+
+  // Confirm the order of the instructions below.
+  if (isExploration == true)
+  {
+    if (instruction != 'E')
+    {
+      delay(100);
+      alignRight();
+      delay(20);
+      alignFront();
+      getSensorValues();
+    }
   }
 }
 
@@ -297,12 +329,12 @@ void alignFront()
 
   while (sensor_diff > 0.2 && sensor_diff < 6)
   {
-    Serial.print("Sensor values are: ");
-    Serial.print(front_l);
-    Serial.print("     ");
-    Serial.println(front_r);
-    Serial.print("     ");
-    Serial.println(abs(front_r - front_l));
+    //    Serial.print("Sensor values are: ");
+    //    Serial.print(front_l);
+    //    Serial.print("     ");
+    //    Serial.println(front_r);
+    //    Serial.print("     ");
+    //    Serial.println(abs(front_r - front_l));
     if (front_r > front_l)
     {
       md.setSpeeds(75, -75);
@@ -331,7 +363,6 @@ void alignRight()
   double back_r = checkSensorDistance(5);
 
   sensor_diff = abs(front_r - back_r);
-
   if ((front_r > 11) || (back_r > 11))
   {
     return;
@@ -384,5 +415,16 @@ void getSensorValues()
   Serial.print(dist5);
   Serial.print("|");
   Serial.print(dist6);
-  Serial.print("|");
+  if (forward_error == true)
+  {
+    Serial.print("|");
+    Serial.println("0");
+  }
+  else
+  {
+    Serial.print("|");
+    Serial.println("1");
+  }
+  forward_error = false;
+  //  Serial.println("");
 }
