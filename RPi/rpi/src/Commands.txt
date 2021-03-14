@@ -1,0 +1,56 @@
+Legend:
+Sender > Receiver, "Command/Message", Instruction/Information
+
+Android > Arduino, "U1|", Move up
+Android > Arduino, "B1|", Move back
+Android > Arduino, "L1|", Turn left
+Android > Arduino, "W1|", Turn right
+Android > Arduino, "SC|", Sensor calibration (RPi send L|A| to Arduino)
+Android > Arduino, "S1|", Shortcut for some movement
+Android > Arduino, "S2|", Shortcut for some movement
+
+Android > Algo, "SE|", Start exploration (RPi send E| to Arduino)
+Android > Algo, "SP|", Shortest path (RPi send F| to Arduino)
+Android > Algo, "SendArena", Give MDF string
+Android > Algo, "starting (x,y,s)", Determine starting point(x and y coordinates, s is a integer of direction: 0-up, 1-right, 2-down, 3-left) eg. starting (11,15,0)
+Android > Algo, "waypoint (x,y)", Set waypoint (x,y) eg. waypoint (8,11)
+
+Arduino > Algo, "S1|S2|S3|S4|S5|S6", SX being the sensor value for X sensor
+
+Algo > Arduino, "FS|", Move forward S grid where S is an integer
+Algo > Arduino, "L|", Turn left
+Algo > Arduino, "W|", Turn right
+Algo > Arduino, "C|", Calibrate corner
+Algo > Arduino, "S|", Sense all and return all 6 sensor values
+Algo > Arduino, "AR|", Align right
+Algo > Arduino, "AF|", Align front
+
+Algo > Android, "M{"map":[{"explored":MDF STRING Part 1,"length":300,"obstacle":MDF String Part 2}]}", Allow android to store the two strings respectively
+
+Algo > RPi, "C[x,y|x,y|x,y]", Command RPi to take photo and store coordinates of obstacle that image is taken from (if no obstacle, x = -1, y = -1)
+Algo > RPi, "N", Exploration ended, stop image processing server and display process images
+
+RPi > Android, "{"image":[x,y,id]}", Send android coordinates and image id of image
+
+RPi > Android, "{"status":"exploring"}", Robot is exploring
+RPi > Android, "{"status":"shortest path"}", Robot is doing fastest path
+RPi > Android, "{"status":"turning left"}", Robot is turning left
+RPi > Android, "{"status":"turning right"}", Robot is turning right
+RPi > Android, "{"status":"idle"}", Robot is idle
+RPi > Android, "{"status":"taking picture"}", Robot is taking picture
+RPi > Android, "{"status":"calibrating corner"}", Robot is calibrating corner
+RPi > Android, "{"status":"sense all"}", Robot is sensing all sensor values
+RPi > Android, "{"status":"moving forward"}", Robot is moving forward
+RPi > Android, "{"status":"align right"}", Robot is aligning right
+RPi > Android, "{"status":"align front"}", Robot is aligning front
+
+RPi > Android, "{"move":[{"direction":"forward"}]}", Robot goes forward on the android map
+RPi > Android, "{"move":[{"direction":"left"}]}", Robot turns left on the android map
+RPi > Android, "{"move":[{"direction":"right"}]}", Robot turns right on the android map
+
+RPi > Arduino, "SC|", Sensor Calibration
+RPi > Arduino, "E|", Start exploration
+RPi > Arduino, "F|", Start fastest path
+
+RPi > Algo, "D", Inform algo that photo has been taken and algo can resume exploration
+RPi > Algo, "I", Inform algo that all images have been taken
