@@ -62,35 +62,33 @@ double checkSensorDistance(int param)
     switch(param){
 
       case 1:{
-        //distance = 40543*pow(sen1[25],-1.426);
-        distance = 28788*pow(sen1[25],-1.383 );//28788x-1.373
-
+        distance = 40092*pow(sen1[25],-1.442);
       }break;
       
       case 2:{
-    //distance2_new = 4709.1*pow(sen2[25], -0.974);
-        distance = 15936*pow(sen2[25], -1.219); //15592x^-1.233
-
-    //distance = 15936*pow(sen2[25],-1.219);
+        distance = 14328*pow(sen2[25],-1.208);
       }break;
       case 3:{
-        //distance= 31110*pow(sen3[25], -1.351);
-        distance = 31110*pow(sen3[25], -1.351); //846642x^-1.931
-
+        distance= 19278*pow(sen3[25], -1.274);
+       // if (distance > 10 && distance < 15) distance = distance + 1;
       }break;
       case 4:{
-        //24560x-1.335
-        distance = 24560*pow(sen4[25],-1.335);
+        //distance = 2166.5*pow(sen4[25],-0.771) - 12.5 ;
+        //distance = 27893*pow(sen4[25],-1.353);
+         distance = 43878*pow(sen4[25],-1.435); //16/03/21, 1208pm Batt B: 43878x^-1.435
       }break;
       case 5:{
-        //67.571e-0.005x
-        distance = 67.571*exp(-0.005*sen5[25]);
+        
+        //distance = 17208*pow(sen5[25], -1.254); 
+        //distance = 27893*pow(sen4[25],-1.353);
+         distance = 40258*pow(sen5[25], -1.416); //16/03/21, 1208pm Batt B: = 40258x^-1.416
       }break;
       case 6:{
         //PS6
-        distance = 119.23*exp(-0.01*sen6[25]);
-      }break;
+        //y = 137.08e-0.005x
 
+        distance = 137.08*exp(-0.005*sen6[25]);
+      }break;
       
       
         

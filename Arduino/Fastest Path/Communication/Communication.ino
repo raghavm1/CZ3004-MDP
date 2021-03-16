@@ -29,6 +29,8 @@ String fromAlgo = "";
 String singleCommand = "";
 int i = 0;
 int rep = 0;
+
+boolean isExploration = false;
 //-----Ticks Variables-----/
 volatile long E1_counts = 0; //left
 volatile long E2_counts = 0; //right
@@ -252,8 +254,8 @@ void motionSwitch(String input)
   char a = input[0];
   if (input[0] == 'S')
   {
-    alignCorner();
-    //getSensorValues();
+    //alignCorner();
+    getSensorValues();
     return;
   }
   if (len_command > 1 && len_command < 3)
@@ -338,8 +340,25 @@ void motionSwitch(String input)
         alignCorner(); 
         break;
       */
+      case 'E':
+    isExploration = true;
+    break;
+  }
+
+  // Confirm the order of the instructions below.
+  if (isExploration == true)
+  {
+    if (input != 'E')
+    {
+      delay(100);
+      alignRight();
+      delay(20);
+      alignFront();
+      getSensorValues();
+    }
   }
 }
+
 
 void alignFront()
 {
@@ -356,13 +375,16 @@ void alignFront()
     //Serial.println(front_r);
     //Serial.print ("     ");
     //Serial.println(abs(front_r - front_l));
-    if (front_r > front_l)
+    if (front_r+0.1 > front_l)
     {
       md.setSpeeds(-75, -75);
     }
-    else if (front_l > front_r)
+    else if (front_l > front_r+0.1)
     {
       md.setSpeeds(75, 75);
+    }
+    else{
+      break;
     }
     //delay(20);
     //double front_l = checkSensorDistance(1);
@@ -394,14 +416,14 @@ void alignRight()
     return;
   }
 
-  while ((sensor_diff > 0.22) && (sensor_diff < 6))
+  while ((sensor_diff > 0.2) && (sensor_diff < 6))
   { //TODO: Adjust sensor_diff lower (and possibly higher) parameters according to own calib.
-    if (back_r > front_r)
+    if (back_r > front_r+0.1)
     {
       md.setSpeeds(75, 75);
       //Serial.println(" - - ");
     }
-    else if (front_r > back_r)
+    else if (front_r+0.1 > back_r)
     {
       md.setSpeeds(-75, -75);
       //Serial.println(" + + ");

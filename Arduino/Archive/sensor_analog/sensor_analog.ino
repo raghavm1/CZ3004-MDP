@@ -63,102 +63,8 @@ void loop()
     mergeSort(sen5, 0, 49);
     mergeSort(sen6, 0, 49);
 
-    //  // -----------------------------------------------------------------------------------
-    //  // EQUATIONS TO CONVERT THE ANALOG VALUES INTO CENTIMETERS:
-    //
-    //  // SENSOR 1 CALCULATION AND OFFSETS:   READINGS DIFFERENT FROM EXCEL
-    //  distanceA0 = -9.1042 + (8155.745 / (sensorA0_avg + 22.11502));
-    //  if(distanceA0 < 15) {distanceA0 += 2;}
-    //  else if(distanceA0 > 15 and distanceA0 < 30) {distanceA0 -= 1;}
-    //  else if(distanceA0 > 30 and distanceA0 < 45) {distanceA0 -= 2;}
-    //  else if(distanceA0 > 50 and distanceA0 < 55) {distanceA0 += 1;}
-    //  else if(distanceA0 > 65 and distanceA0 < 70) {distanceA0 += 2;}
-    //
-    //  // SENSOR 2 CALCULATION AND OFFSETS:
-    //  distanceA1 = -3.53939 + (5891.966 / (sensorA1_avg - 11.84241));
-    //  if(distanceA1 < 10) {distanceA1 += 1;}
-    //  else if(distanceA1 > 15 and distanceA1 < 20) {distanceA1 += 1;}
-    //
-    //  // SENSOR 3 CALCULATION AND OFFSETS:
-    //  distanceA2 = 1.41294 + (4269.218 / (sensorA2_avg - 28.92149));
-    //  if(distanceA2 > 10 and distanceA2 < 40) {distanceA2 += 1;}
-    //  else if(distanceA2 > 55 and distanceA2 < 60) {distanceA2 += 1;}
-    //  else if(distanceA2 > 65) {distanceA2 += 2;}
-    //
-    //  // SENSOR 4 CALCULATION AND OFFSETS:
-    //  distanceA3 = 0.252644 + (4894.633 / (sensorA3_avg - 26.90775));
-    //  if(distanceA3 > 70) {distanceA3 -= 3;}
-    //  else if(distanceA3 > 80) {distanceA3 -= 2;}
-    //
-    //  // SENSOR 5 CALCULATION AND OFFSETS:
-    //  distanceA4 = 0.404528 + (5267.347 / (sensorA4_avg - 7.79982));
-    //  if(distanceA4 < 13) {distanceA4 -= 1;}
-    //  else if(distanceA4 > 50 and distanceA4 < 70) {distanceA4 -= 2;}
-    //
-    //  // SENSOR 6 CALCULATION AND OFFSETS:
-    //  distanceA5 = -3.3012 + (12806.428 / (sensorA5_avg - 9.81909));
-    //  if(distanceA5 < 25) {distanceA5 -= 1;}
-    //  else if(distanceA5 > 25 and distanceA5 < 45) {distanceA5 += 1;}
-    //  else if(distanceA5 > 75 and distanceA5 < 80) {distanceA5 -= 1;}
-
-    //  Serial.print(sen1[26]);
-    //  Serial.print(", ");
-    //  Serial.print(sen2[26]);
-    //  Serial.print(", ");
-    //  Serial.print(sen3[26]);
-    //  Serial.print(", ");
-    //  Serial.print(sen4[26]);
-    //  Serial.print(", ");
-    //  Serial.print(sen5[26]);
-    //  Serial.print(", ");
-    //  Serial.println(sen6[26]);
-
-    //  y0 + (A/sen-x0)
-
-    float Y0, A, X0;
-
-    //PS2
-    Y0 = -2.2391875396427654;
-    A = 6888.216506585592;
-    X0 = -29.964430577988644;
-
-    
-    //PS2
-    B = 87.12835168852241;
-    C = -0.007743254374094627;
-    A = 9.43768900416158;
-
-    //PS3
-   
-    
-    //distance2_new = 4709.1*pow(sen2[25], -0.974);
-  //  distance2_f = A + B*exp(C*sen2[25]);
-    //distance2_new = Y0+ (A /(sen2[25]-X0));
-    //distance1_new = 18237*pow(sen1[25], -1.247);
-
-    distance1_new = 12732*pow(sen1[25], -1.186);
-   // distance3_new = (0.0006*sen3[25]*sen3[25]) - 0.5197*sen3[25] + 134.03;
 
    
-   
-    //distance3_new = 155.83*exp(-0.005*sen3[25]);
-    //distance3_new = (-29.4879) + (23951.300626/(sen2[25] + 81.9795));
-    //distance3_new = 155.83*exp(-0.005*sen3[25]);
-   // distance3_new = 155.5*exp(-0.006*sen3[25]);
-/*
-    distance4_new = 0;
-    distance3_new = 28299*pow(sen3[25],-1.199);
-    
-    Serial.print("Analog reading for Sensor 2: ");
-    distance2_new = 14871*pow(sen2[25],-1.234);
-    Serial.println(sen2[25]);
-    Serial.println(distance2_new);
-    Serial.println("                   ");
-    Serial.print("Analog reading for Sensor 4: ");
-    distance4_new = 261245*pow(sen4[25],-1.764);
-    261245x-1.764
-    Serial.println(sen4[25]);
-    Serial.println(distance4_new);*/
 
 //Front Sensors Calibration for Battery A : [6.371V]
 /*
@@ -179,14 +85,40 @@ void loop()
     distance3_new = 31110*pow(sen3[25], -1.351); //846642x^-1.931
     */
     //150.12e-0.005x
-    distance6_new = 150.12*exp(-0.005*sen6[25]);
-    
-    Serial.print("long range (6): ");
-    Serial.println(sen6[25]);
+    //distance6_new = 150.12*exp(-0.005*sen6[25]);
+    distance1_new = 40092*pow(sen1[25],-1.442);
+    distance2_new = 14328*pow(sen2[25], -1.208);
+    distance3_new = 19278*pow(sen3[25], -1.274);
+    //distance4_new = 2166.5*pow(sen4[25],-0.771);
+   // distance4_new = 27714*pow(sen4[25],-1.355); //16/03/21, 1035am: 27714x^-1.355
+    distance4_new = 43878*pow(sen4[25],-1.435); //16/03/21, 1208pm Batt B: 43878x^-1.435
+   // distance5_new = 17208*pow(sen5[25], -1.254); 
+    distance5_new = 40258*pow(sen5[25], -1.416); //16/03/21, 1208pm Batt B: = 40258x^-1.416
+   /* Serial.print("front left(1): ");
+    Serial.println(sen1[25]);
     Serial.println("        ");
-    Serial.println(distance6_new);
-    
+    Serial.println(distance1_new);
 
+    Serial.print("front center(2): ");
+    Serial.println(sen2[25]);
+    Serial.println("        ");
+    Serial.println(distance2_new);
+
+    Serial.print("front right(3): ");
+    Serial.println(sen3[25]);
+    Serial.println("        ");
+    Serial.println(distance3_new);*/
+
+  /*  distance4_new = 2166.5*pow(sen4[25],-0.771);
+    Serial.print("right back(4): ");
+    Serial.println(sen4[25]);
+    Serial.println("        ");
+    Serial.println(distance4_new);*/
+
+    //Serial.print("right front(5): ");
+    //Serial.println(sen5[25]);
+    //Serial.println("        ");
+    //Serial.println(distance3_new)
     
 /*
     distance4_new = 24560*pow(sen4[25],-1.33);
@@ -202,7 +134,7 @@ void loop()
     Serial.print("        ");
     Serial.println(distance5_new);
         Serial.println("");*/
-    /*
+    
     Serial.print("Front_Left (1): ");
     Serial.print(sen1[25]);
     Serial.print("        ");
@@ -216,11 +148,29 @@ void loop()
     Serial.print("Front_Right (3): ");
     Serial.print(sen3[25]);
     Serial.print("        ");
-    Serial.println(distance3_new);
+    Serial.println(distance3_new+0.1);
     Serial.print("        ");
     Serial.println("");
 
-   */ 
+    Serial.print("Right_back (4): ");
+    Serial.print(sen4[25]);
+    Serial.print("        ");
+    Serial.println(distance4_new);
+    Serial.print("        ");
+    Serial.println("");
+
+    Serial.print("Right_front (5): ");
+    Serial.print(sen5[25]);
+    Serial.print("        ");
+    Serial.println(distance5_new);
+    Serial.print("        ");
+    Serial.println("");
+
+   
+   //distance6_new = 137.08*exp(-0.005*(sen6[25]));
+   //y = 17208x-1.254
+
+
     
    delay(750);
 } 

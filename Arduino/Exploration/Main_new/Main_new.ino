@@ -201,7 +201,7 @@ void loop()
         piCommand_buffer[i] = readChar;
         
         i++;
-        Serial.println(readChar);
+        //Serial.println(readChar);
         //Serial.print("next buffer value is ");
         //Serial.println(piCommand_buffer[i]);
         if (readChar == '#')
@@ -209,6 +209,7 @@ void loop()
           return;
         }
 
+        // TODO : configure for 2 digit numbers
         else if(readChar - '0' >= 1 && readChar - '0' <=9){
           arg = readChar - '0';
           
@@ -225,21 +226,11 @@ void loop()
   }
 
   instruction = ins;  //[ORIGINAL] : piCommand_buffer[0]
- // Serial.println(instruction);
- Serial.println("#######");
- Serial.println(instruction);
-  // multiply distance argument by 10
-  /*while (piCommand_buffer[j] != '|' && j < buffer_size)
-  {
-    // subtract from ASCII value to get equivalent integer value
-    //arg = arg + (piCommand_buffer[i] - 48);
-    //arg *= 10;
-    j++;
-    
-  }*/
-  //Serial.println(arg);
+
+
+ 
   motionSwitch(instruction, arg);
-  getSensorValues();
+  //getSensorValues();
 }
 
 void motionSwitch(char input, int rep)
@@ -265,52 +256,64 @@ void motionSwitch(char input, int rep)
       }
     }
     md.setBrakes(400, 400);
-    delay(250);
+    //delay(250);
     break;
 
   case 'L': //rotating to the left
-
+    //for(i = 0; i < rep; i++){
     E1_counts2 = 0;
     E2_counts2 = 0;
     calculate_Distance();
     rotateLeft(83);
-
-    while (lrAvgDistance < rotateDistance)
-    {
-      rotateLeft(83);
-      calculate_Distance();
-    }
-    md.setBrakes(400, 400);
-    delay(250);
+      while (lrAvgDistance < rotateDistance)
+      {
+        rotateLeft(83);
+        calculate_Distance();
+      }
+      md.setBrakes(400, 400);
+      //delay(250);
+    //}
+    //md.setBrakes(400, 400);
+    
     break;
 
+
   case 'W': //rotating to the right
-    E1_counts2 = 0;
-    E2_counts2 = 0;
-    calculate_Distance();
-    rotateRight(83);
-    while (lrAvgDistance < rotateDistance)
-    {
-      rotateRight(83);
+    //for(i = 0; i < rep; i++){
+      E1_counts2 = 0;
+      E2_counts2 = 0;
       calculate_Distance();
-    }
-    md.setBrakes(400, 400);
-    delay(250);
+      rotateRight(83);
+      while (lrAvgDistance < rotateDistance)
+      {
+        rotateRight(83);
+        calculate_Distance();
+      }
+      md.setBrakes(400, 400);
+    //}
+    //md.setBrakes(400, 400);
+    //delay(250);
     break;
 
   case 'C':
     alignFront();
     break;
+
+  case 'V':
+    alignRight();
+    break;
   case 'E':
     isExploration = true;
+    //getSensorValues();
     break;
   }
 
   // Confirm the order of the instructions below.
   if (isExploration == true)
   {
-    if (instruction != 'E')
-    {
+    if (input != 'E')
+    { 
+      adjustDistance();
       delay(100);
       alignRight();
       delay(20);
@@ -318,6 +321,26 @@ void motionSwitch(char input, int rep)
       getSensorValues();
     }
   }
+}
+
+void adjustDistance(){
+
+  double front_m = checkSensorDistance(2);
+ 
+  while (front_m <= 9){
+    if (checkSensorDistance(2) < 6.9){
+      md.setSpeeds(-75, 75);
+      //Serial.println("backward");
+    }else if (checkSensorDistance(2) >= 6.9 && checkSensorDistance(2) <= 7.8){
+      md.setBrakes(400, 400);
+      break;
+    }
+    front_m = checkSensorDistance(2);
+   }
+  
+
+  
+  
 }
 
 void alignFront()
@@ -335,17 +358,22 @@ void alignFront()
     //    Serial.println(front_r);
     //    Serial.print("     ");
     //    Serial.println(abs(front_r - front_l));
-    if (front_r > front_l)
+    if (checkSensorDistance(3) > checkSensorDistance(1))
     {
-      md.setSpeeds(75, -75);
+      md.setSpeeds(-75, -75);
     }
-    else if (front_l > front_r)
+    else if (checkSensorDistance(1) > checkSensorDistance(3))
     {
-      md.setSpeeds(-75, 75);
+      md.setSpeeds(75, 75);
     }
-    //delay(20);
-    //double front_l = checkSensorDistance(1);
-    // double front_r = checkSensorDistance(3);
+    else{
+      break;
+    }
+    front_l = checkSensorDistance(1);
+    front_r = checkSensorDistance(3);
+    //Serial.print(front_l);
+    //Serial.print("       ");
+    //Serial.println(front_r);
     sensor_diff = abs(front_l - front_r);
   }
   md.setBrakes(400, 400);
@@ -359,8 +387,8 @@ void alignRight()
   //if distance is equal, return
   //else, rotate till distance is equal
 
-  double front_r = checkSensorDistance(4);
-  double back_r = checkSensorDistance(5);
+  double back_r = checkSensorDistance(4);
+  double front_r = checkSensorDistance(5);
 
   sensor_diff = abs(front_r - back_r);
   if ((front_r > 11) || (back_r > 11))
@@ -372,15 +400,20 @@ void alignRight()
   {
     if (back_r > front_r)
     {
-      md.setSpeeds(50, -50);
+      md.setSpeeds(75, 75);
     }
     else if (front_r > back_r)
     {
-      md.setSpeeds(-50, 50);
+      md.setSpeeds(-75, -75);
     }
-
+    else{
+      break;
+    }
     front_r = checkSensorDistance(4);
     back_r = checkSensorDistance(5);
+    sensor_diff = abs(front_r - back_r);
+    //Serial.print(front_r);
+    //Serial.println(back_r);
   }
   md.setBrakes(400, 400);
 }
@@ -395,26 +428,17 @@ void moveNgrids(int n)
 
 void getSensorValues()
 {
-  float dist1 = checkSensorDistance(1);
-  float dist2 = checkSensorDistance(2);
-  float dist3 = checkSensorDistance(3);
-
-  float dist4 = checkSensorDistance(4);
-
-  float dist5 = checkSensorDistance(5);
-  float dist6 = checkSensorDistance(6);
-
-  Serial.print(dist1);
+  Serial.print(checkSensorDistance(3));
   Serial.print("|");
-  Serial.print(dist2);
+  Serial.print(checkSensorDistance(2));
   Serial.print("|");
-  Serial.print(dist3);
+  Serial.print(checkSensorDistance(1));
   Serial.print("|");
-  Serial.print(dist4);
+  Serial.print(checkSensorDistance(4));
   Serial.print("|");
-  Serial.print(dist5);
+  Serial.print(checkSensorDistance(5));
   Serial.print("|");
-  Serial.print(dist6);
+  Serial.print(checkSensorDistance(6));
   if (forward_error == true)
   {
     Serial.print("|");
