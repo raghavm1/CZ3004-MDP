@@ -86,14 +86,31 @@ void loop()
     */
     //150.12e-0.005x
     //distance6_new = 150.12*exp(-0.005*sen6[25]);
-    distance1_new = 40092*pow(sen1[25],-1.442);
-    distance2_new = 14328*pow(sen2[25], -1.208);
-    distance3_new = 19278*pow(sen3[25], -1.274);
+    distance1_new = 40092*pow(sen1[25],-1.442)+1;
+    distance2_new = 14328*pow(sen2[25], -1.208)+1;
+    distance3_new = 19278*pow(sen3[25], -1.274)+1;
     //distance4_new = 2166.5*pow(sen4[25],-0.771);
    // distance4_new = 27714*pow(sen4[25],-1.355); //16/03/21, 1035am: 27714x^-1.355
     distance4_new = 43878*pow(sen4[25],-1.435); //16/03/21, 1208pm Batt B: 43878x^-1.435
    // distance5_new = 17208*pow(sen5[25], -1.254); 
     distance5_new = 40258*pow(sen5[25], -1.416); //16/03/21, 1208pm Batt B: = 40258x^-1.416
+//
+  if(distance1_new < 8.2){
+         distance1_new = distance1_new - 1.7;
+        }else if(distance1_new > 6){
+         distance1_new = distance1_new +0.5 ;
+        }
+        
+  if(distance2_new < 7.6){
+         distance2_new = distance2_new - 1.5;
+        }else if(distance2_new > 6){
+         distance2_new = distance2_new +0.5 ;
+        }
+  if(distance3_new < 7.5){
+         distance3_new = distance3_new - 1.4;
+        }else if(distance2_new > 6){
+         distance3_new = distance3_new +0.5 ;
+        }
    /* Serial.print("front left(1): ");
     Serial.println(sen1[25]);
     Serial.println("        ");
