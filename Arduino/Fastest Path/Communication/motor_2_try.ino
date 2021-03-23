@@ -145,12 +145,10 @@ void rotateRight(float degree)
     // for 270, 17.6, after 2 hour usage
     // for 270, 17.4 with full charge
       // for 6.352V = 17.1 as of now
-      
     // for battery A: 6.444V [as of 18th Feb] => 15.2
-    
-//Target_RPM = 140: Battery A, 6.444V, rkp = 16.8;
+
 //Target_RPM = 140: Battery B, 6.404~6.462V, rkp = 15.9;
-    rotateDistance = ((16.8 * PI) / 360) * degree; //18.89distance travel for 1cm based on degree 18.9 best
+    rotateDistance = ((15.3 * PI) / 360) * degree; //18.89distance travel for 1cm based on degree 18.9 best
 
     //lrAvgDistance = 0;
 
@@ -158,11 +156,13 @@ void rotateRight(float degree)
     if (lrAvgDistance >= rotateDistance) //if rotation distance exceeded, stop the motor
     {
 
+        Serial.println("terminating rotateRight");
+
         E1_counts2 = 0;
         E2_counts2 = 0;
         lrAvgDistance = 0;
         rotateDistance = 0;
-        md.setBrakes(300, 300);
+        md.setBrakes(400, 400);
         input = 'e'; // to stop entering turn left
                      //   rotate_Right = false;
     }
@@ -178,11 +178,10 @@ void rotateLeft(float degree)
     double adjustedRightSpeed = PID_computeR();
     md.setSpeeds(-adjustedLeftSpeed, -adjustedRightSpeed);
     // for 6.38V = 17.25 as of now
+    // for battery A: 6.444V [as of 18th Feb] => 17.25
     
-// for battery A: 6.444V [as of 18th Feb] => 17.25
-//Target_RPM = 140: Battery A, 6.444V, = 15.8 6.344V = 15.8;
-//Target_RPM = 140: Battery B, 6.462V, = 16.8;
-    rotateDistance = ((15.8  * PI) / 360) * degree; //
+//Target_RPM = 140: Battery B, 6.462V, rkp = 16.8;
+    rotateDistance = ((15.8 * PI) / 360) * degree; //18distance travel for 1cm based on degree 18.9 best
 
     
    // lrAvgDistance = 0;

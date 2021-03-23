@@ -1,9 +1,9 @@
-/*int sensorA0 = 0; // Proximity Sensor 1 on board - FRONT LEFT SENSOR.
+int sensorA0 = 0; // Proximity Sensor 1 on board - FRONT LEFT SENSOR.
 int sensorA1 = 0; // Proximity Sensor 2 on board - FRONT MIDDLE SENSOR.
 int sensorA2 = 0; // Proximity Sensor 3 on board - FRONT RIGHT SENSOR.
 int sensorA3 = 0; // Proximity Sensor 4 on board - RIGHT SIDE FRONT SENSOR.
 int sensorA4 = 0; // Proximity Sensor 5 on board - RIGHT SIDE BACK SENSOR.
-int sensorA5 = 0; // Proximity Sensor 6 on board - FACING LEFT LONG RANGE SENSOR.*/
+int sensorA5 = 0; // Proximity Sensor 6 on board - FACING LEFT LONG RANGE SENSOR.
 int count = 0;
 
 // Float variables to hold the voltage value of the sensor outputs.
@@ -48,7 +48,6 @@ double checkSensorDistance(int param)
         sen4[count] = analogRead(A3);
         sen5[count] = analogRead(A4);
         sen6[count] = analogRead(A5);
-      //delay(10);
     }
     mergeSort(sen1, 0, 49);
     mergeSort(sen2, 0, 49);
@@ -62,33 +61,56 @@ double checkSensorDistance(int param)
     switch(param){
 
       case 1:{
+        
+        //distance = 40092*pow(sen1[25],-1.442);
         distance = 40092*pow(sen1[25],-1.442);
       }break;
       
       case 2:{
-        distance = 14328*pow(sen2[25],-1.208);
+      /*  distance = 14328*pow(sen2[25],-1.208)-2;
+
+        if(distance < 6.5){
+          distance = distance -1;
+        }else if(distance < 10){
+          distance = distance - 0.5;
+        }*/
+        distance = 14328*pow(sen2[25], -1.208);
       }break;
       case 3:{
-        distance= 19278*pow(sen3[25], -1.274);
+        //distance= 19278*pow(sen3[25], -1.274);
+        distance = 19278*pow(sen3[25], -1.274);
        // if (distance > 10 && distance < 15) distance = distance + 1;
       }break;
       case 4:{
         //distance = 2166.5*pow(sen4[25],-0.771) - 12.5 ;
         //distance = 27893*pow(sen4[25],-1.353);
-         distance = 43878*pow(sen4[25],-1.435); //16/03/21, 1208pm Batt B: 43878x^-1.435
+
+         //Batt B
+         //distance = 43878*pow(sen4[25],-1.435)+0.2; //16/03/21, 1208pm Batt B: 43878x^-1.435
+
+         //Batt A
+         //distance = 43878*pow(sen4[25],-1.435); //16/03/21, 1208pm Batt B: 43878x^-1.435
+
+         distance = 43878*pow(sen4[25],-1.435);
       }break;
       case 5:{
         
         //distance = 17208*pow(sen5[25], -1.254); 
         //distance = 27893*pow(sen4[25],-1.353);
-         distance = 40258*pow(sen5[25], -1.416); //16/03/21, 1208pm Batt B: = 40258x^-1.416
+        //Batt B
+        //distance = 40258*pow(sen5[25], -1.416)+0.16; //16/03/21, 1208pm Batt B: = 40258x^-1.416
+        //Batt A
+        //distance = 40258*pow(sen5[25], -1.416); //16/03/21, 1208pm Batt B: = 40258x^-1.416
+
+        distance = 40258*pow(sen5[25], -1.416);
       }break;
       case 6:{
         //PS6
         //y = 137.08e-0.005x
-
+        
         distance = 137.08*exp(-0.005*sen6[25]);
       }break;
+
       
       
         

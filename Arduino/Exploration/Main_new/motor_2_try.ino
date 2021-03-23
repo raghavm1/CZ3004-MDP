@@ -156,6 +156,8 @@ void rotateRight(float degree)
     if (lrAvgDistance >= rotateDistance) //if rotation distance exceeded, stop the motor
     {
 
+        Serial.println("terminating rotateRight");
+
         E1_counts2 = 0;
         E2_counts2 = 0;
         lrAvgDistance = 0;
