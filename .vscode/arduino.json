@@ -1,0 +1,6 @@
+{
+    "programmer": "AVR ISP",
+    "board": "arduino:avr:uno",
+    "port": "COM4",
+    "sketch": "Arduino\\Exploration\\Main_new\\Main_new.ino"
+}
