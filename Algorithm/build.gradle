@@ -1,0 +1,55 @@
+import java.text.SimpleDateFormat
+
+plugins {
+    id 'java'
+    id 'java-library'
+    id 'application'
+    id 'com.google.osdetector' version '1.6.2'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+description = 'NTU MDP CZ3004 Group 3 Project on a Robot\'s journey to find sentience at the end gridset of a 20 by 20 grid based physical arena.'
+
+Date buildTimeAndDate = new Date()
+ext {
+    buildDate = new SimpleDateFormat('yyyy-MM-dd').format(buildTimeAndDate)
+    buildTime = new SimpleDateFormat('HH:mm:ss.SSSZ').format(buildTimeAndDate)
+}
+
+ext.platform = osdetector.os == 'osx' ? 'mac' : osdetector.os == 'windows' ? 'win' : osdetector.os
+
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    implementation 'org.kordamp.ikonli:ikonli-antdesignicons-pack:12.2.0'
+    implementation 'eu.hansolo:tilesfx:11.47'
+    implementation "org.openjfx:javafx-base:11:$platform"
+    implementation "org.openjfx:javafx-graphics:11:$platform"
+    implementation "org.openjfx:javafx-controls:11:$platform"
+    implementation "org.openjfx:javafx-web:11:$platform"
+    implementation "org.openjfx:javafx-media:11:$platform"
+    implementation ('eu.hansolo:tilesfx:11.40') {
+        exclude group: 'org.openjfx'
+    }
+    implementation ('eu.hansolo:Medusa:11.5') {
+        exclude group: 'org.openjfx'
+    }
+    implementation ('eu.hansolo:regulators:11.7') {
+        exclude group: 'org.openjfx'
+    }
+    implementation 'org.kordamp.ikonli:ikonli-core:11.5.0'
+    implementation 'org.kordamp.ikonli:ikonli-javafx:11.5.0'
+    implementation 'org.kordamp.ikonli:ikonli-material-pack:11.5.0'
+    implementation 'org.kordamp.ikonli:ikonli-materialdesign-pack:11.5.0'
+    implementation 'org.kordamp.ikonli:ikonli-fontawesome-pack:11.5.0'
+    implementation 'org.kordamp.ikonli:ikonli-weathericons-pack:11.5.0'
+    implementation 'com.googlecode.json-simple:json-simple:1.1.1'
+}
