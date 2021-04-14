@@ -26,26 +26,13 @@ IMAGE_WIDTH = 640
 IMAGE_HEIGHT = 360
 IMAGE_FORMAT = 'bgr'
 
-<<<<<<< HEAD
-BASE_IP = 'tcp://192.168.3.'
-PORT = ':5555'
-
-IMAGE_PROCESSING_SERVER_URLS = {
-    'cheyanne': BASE_IP + '1' + PORT,
-    'elbert': BASE_IP + '00' + PORT,  # don't have elbert's ip address yet
-    'jason': BASE_IP + '52' + PORT,
-    'joshua': BASE_IP + '93' + PORT,
-    'mingyang': BASE_IP + '74' + PORT,
-    'reuben': BASE_IP + '00' + PORT,  # don't have reuben's ip address yet
-    'winston': BASE_IP + '55' + PORT,
-    'yingting': BASE_IP + '90' + PORT,
-}
-=======
 #from seniors
 BASE_IP = 'tcp://192.168.3.'
 PORT = ':5555'
 
-IMAGE_PROCESSING_SERVER_URLS = 'tcp://192.168.3.13:5555'
->>>>>>> f2afaf36a2b19dd5407c0283ddd18d146ad6b9d5
+IMAGE_PROCESSING_SERVER_URLS = {
+    'Kenneth': BASE_IP + '13' + PORT,
+    
+}
 
 

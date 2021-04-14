@@ -1,18 +1,7 @@
 import bluetooth as bt
 from src.config import ANDROID_SOCKET_BUFFER_SIZE, LOCALE, RFCOMM_CHANNEL, UUID
-'''
-from src.config import ANDROID_SOCKET_BUFFER_SIZE, LOCALE, RFCOMM_CHANNEL, UUID
-'''
 
-
-
-'''
-Raspberry Pi acts as socket server whereas Android device acts as a client. Android N7 needs a client socket script as well to build connection.
-Should be able to send and receive data and information through the server/client.
-
-'''
-
-class Android:
+class Android_communicator:
     def __init__(self):
         self.server_sock = None
         self.client_sock = None
@@ -32,14 +21,15 @@ class Android:
 
         print('server socket:', str(self.server_sock))
 
-    def connect(self):
+    def connect_android(self):
         while True:
             retry = False
 
             try:
-                print('Establishing connection with Android N7 Tablet...')
+                print('Now Builing connection with Android Tablet...')
 
                 if self.client_sock is None:
+                    print('Please accept the connection request on Android Tablet')
                     self.client_sock, address = self.server_sock.accept()
                     print("Successfully connected to Android at address: " + str(address))
                     retry = False
@@ -58,7 +48,7 @@ class Android:
 
             print('Retrying Bluetooth Connection to Android...')
 
-    def disconnect(self):
+    def disconnect_android(self):
         try:
             if self.client_sock is not None:
                 self.client_sock.close()
@@ -69,7 +59,7 @@ class Android:
         except Exception as error:
             print("Android disconnect failed: " + str(error))
 
-    def disconnect_all(self):
+    def disconnect_all_android(self):
         try:
             if self.client_sock is not None:
                 self.client_sock.close()
@@ -84,10 +74,10 @@ class Android:
         except Exception as error:
             print("Android disconnect failed: " + str(error))
 
-    def read(self):
+    def read_android(self):
         try:
             message = self.client_sock.recv(ANDROID_SOCKET_BUFFER_SIZE).strip()
-            print('From android:')
+            print('The message from android:')
             print(message)
 
             if message is None:
@@ -99,23 +89,24 @@ class Android:
             return None
 
         except Exception as error:
-            print('Android read failed: ' + str(error))
+            print('Android read process has failed: ' + str(error))
             raise error
 
-    def write(self, message):
+    def write_android(self, message):
         try:
-            print('To Android:')
+            print('To Android Tablet:')
             print(message)
             self.client_sock.send(message)
 
         except Exception as error:
-            print('Android write failed: ' + str(error))
+            print('Android write process has failed: ' + str(error))
             raise error
+
 if __name__ == '__main__':
-    A = Android()
-    A.connect()
-    A.read()
-    message = "Hello Android"
-    A.write(message)
-    print("Android script succesfully ran.")
+    A = Android_communicator()
+    A.connect_android()
+    A.read_android()
+    message = 'Hello Android!'
+    A.write_android(message)
+    print("Android script successfully ran.")
 
