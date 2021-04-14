@@ -1,1 +1,16 @@
-CZ3004-MDP
+# CZ/CE 3004 - Multi Disciplinary Project
+
+## Project Objectives
+
+The main objective of this multi-disciplinary project is to build a functional robotic system with both software and hardware components provided by the course. After doing so, the robot has to goes through certain functionalities checks that will be listed below as well as the three main tasks: Fastest Path, Image Recognition and Exploration.
+
+The team adopted the common practices in project management to ensure a good control of the project lifecycle, minimized risks and a smooth delivery of the project.
+
+For the functionalities requirements, it will be explained by each respective component sub page.
+
+Team Structure
+Team Members
+| Algorithm | Arduino | Android | Raspberry Pi |
+| ------------- | ---------------------- | ------------------ | ------------------ |
+| Chia Aloysius | Mantri Raghav | Wang Lu | Shen Guangxu |
+| Sun Jinghan | Choar Choong Leong (L) | Gwyn Bong Xiao Min | Ng Chen Ee Kenneth |
