@@ -1,4 +1,4 @@
-# CZ/CE 3004 - Multi Disciplinary Project (AY 2020/21 - Sem 2)
+# CZ/CE3004 - Multi Disciplinary Project(AY 20/21 - Sem 2)
 
 ## Project Objectives
 
