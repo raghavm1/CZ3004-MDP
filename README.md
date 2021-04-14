@@ -4,11 +4,11 @@
 
 ## Project Objectives
 
-The main objective of this multi-disciplinary project is to build a functional robotic system with both software and hardware components provided by the course. After doing so, the robot has to goes through certain functionalities checks that will be listed below as well as the three main tasks: Fastest Path, Image Recognition and Exploration.
+The main objective of this multi-disciplinary project is to build a functional robotic system with both software and hardware components provided by the course. After doing so, the robot has to goes through certain functionality checks as well as the three main tasks: Fastest Path, Image Recognition and Exploration.
 
-The team adopted the common practices in project management to ensure a good control of the project lifecycle, minimized risks and a smooth delivery of the project.
+The team adopted the common practices in project management to ensure a good control of the project lifecycle, minimized risks and ensured a smooth delivery of the project.
 
-For the functionalities requirements, it will be explained by each respective components' sub folder's readme.
+For the functionality requirements, it will be explained by each respective components' sub folder's readme.
 
 ## Team Structure
 
