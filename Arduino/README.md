@@ -1,5 +1,7 @@
 # CZ3004 MDP Arduino
 
+![robot-front](https://github.com/raghavm1/CZ3004-MDP/blob/main/Arduino/robot.jpg)
+
 ## Components used
 
 - Arduino Uno
@@ -9,14 +11,14 @@
 
 ## Fastest path
 
-For running code for fastest path, compile and upload Fastest_Path.ino
+For running code for fastest path, go to the Fastest_Path folder, compile and upload Fastest_Path.ino on the Arduino
 
 ## Exploration
 
-For running code for exploration, compile and upload Exploration.ino
+For running code for exploration, go to the, compile and upload Exploration.ino on the Arduino
 
 ## Sensor calibration
 
 No external libraries have been used for obtaining sensor values. Analog values are read using the serial monitor and are plotted on a graph. After that, a function which fits the curve is used to convert analog readings to centimeter distances.
 
-For sensor calibration, refer to sensor_calibration and upload the code on the arduino uno board. The serial monitor output are the analogRead() values.
+For sensor calibration, refer to sensor_calibration and upload the code on the Arduino. The serial monitor output are the analogRead() values.
