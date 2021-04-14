@@ -1,6 +1,6 @@
 # CZ/CE3004 - Multi Disciplinary Project(AY 20/21 - Sem 2)
 
-![Robot](https://github.com/raghav/CZ3004-MDP/blob/main/robot.jpg?raw=true)
+![Robot](https://github.com/raghavm1/CZ3004-MDP/blob/main/robot.jpg)
 
 ## Project Objectives
 
