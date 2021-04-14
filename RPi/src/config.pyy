@@ -30,6 +30,9 @@ IMAGE_FORMAT = 'bgr'
 BASE_IP = 'tcp://192.168.3.'
 PORT = ':5555'
 
-IMAGE_PROCESSING_SERVER_URLS = 'tcp://192.168.3.13:5555'
+IMAGE_PROCESSING_SERVER_URLS = {
+    'Kenneth': BASE_IP + '13' + PORT,
+    
+}
 
 

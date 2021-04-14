@@ -5,30 +5,30 @@ from src.config import BAUD_RATE
 from src.config import LOCALE
 
 
-class Arduino:
+class Arduino_communicator:
     def __init__(self, serial_port=SERIAL_PORT, baud_rate=BAUD_RATE):
         self.serial_port = serial_port
         self.baud_rate = baud_rate
         self.connection = None
 
-    def connect(self):
+    def connect_arduino(self):
         count = 10000
         while True:
             retry = False
 
             try:
                 if count >= 10000:
-                    print('Establishing connection with Arduino')
+                    print('Now building connection with Arduino Board')
 
                 self.connection = serial.Serial(self.serial_port, self.baud_rate)
 
                 if self.connection is not None:
-                    print('Successfully connected with Arduino: ' + str(self.connection.name))
+                    print('Successfully connected with Arduino Board: ' + str(self.connection.name))
                     retry = False
 
             except Exception as error:
                 if count >= 10000:
-                    print('Connection with Arduino failed: ' + str(error))
+                    print('Connection with Arduino Board failed: ' + str(error))
 
                 retry = True
 
@@ -41,7 +41,7 @@ class Arduino:
 
             count += 1
 
-    def disconnect(self):
+    def disconnect_arduino(self):
         try:
             if self.connection is not None:
                 self.connection.close()
@@ -52,7 +52,7 @@ class Arduino:
         except Exception as error:
             print('Arduino close connection failed: ' + str(error))
 
-    def read(self):
+    def read_arduino(self):
         try:
             message = self.connection.readline().strip()
             print('From Arduino:')
@@ -67,7 +67,7 @@ class Arduino:
             print('Arduino read failed: ' + str(error))
             raise error
 
-    def write(self, message):
+    def write_arduino(self, message):
         try:
             print('To Arduino:')
             print(message)
@@ -78,9 +78,9 @@ class Arduino:
             raise error
 
 if __name__ == '__main__':
-    A = Arduino()
-    A.connect()
-    A.read()
+    A = Arduino_communicator()
+    A.connect_arduino()
+    A.read_arduino()
     message = "Hello Arduino"
-    A.write(message)
-    print("Android script succesfully ran.")
+    A.write_arduino(message)
+    print("Arduino script succesfully ran.")

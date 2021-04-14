@@ -48,7 +48,7 @@ RPi > Android, "{"move":[{"direction":"forward"}]}", Robot goes forward on the a
 RPi > Android, "{"move":[{"direction":"left"}]}", Robot turns left on the android map
 RPi > Android, "{"move":[{"direction":"right"}]}", Robot turns right on the android map
 
-RPi > Arduino, "SC|", Sensor Calibration
+RPi > Arduino, "L|A|", Sensor Calibration
 RPi > Arduino, "E|", Start exploration
 RPi > Arduino, "F|", Start fastest path
 

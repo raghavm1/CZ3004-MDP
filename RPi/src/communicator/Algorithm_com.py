@@ -1,48 +1,38 @@
 import socket
-'''
-from config import LOCALE, ALGORITHM_SOCKET_BUFFER_SIZE, WIFI_IP, WIFI_PORT
-'''
-
-import socket
 
 from src.config import LOCALE, ALGORITHM_SOCKET_BUFFER_SIZE, WIFI_IP, WIFI_PORT
 
-'''
-Algorithm will need an accompanying (reference available in playgrounds pc_client.py
-Algorithm.connect() will wait for Algorithm to connect before proceeding
-'''
-
-
-class Algorithm:
+class Algorithm_communicator:
     def __init__(self, host=WIFI_IP, port=WIFI_PORT):
-        self.host = host
-        self.port = port
 
-        self.client_sock = None
+        self.port = port
+        self.host = host
+
+
         self.socket = None
         self.address = None
+        self.client_sock = None
 
         self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
         self.socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+        print('The port address is :', self.port)
+        print('The host address is :', self.host)
         self.socket.bind((self.host, self.port))
         self.socket.listen(1)
 
-    def connect(self):
+    def connect_algo(self):
         while True:
             retry = False
 
             try:
-                print('Establishing connection with Algorithm')
+                print('Connecting with Algorithm PC')
 
                 if self.client_sock is None:
-                    print('Position 1')
                     self.client_sock, self.address = self.socket.accept()
-                    print('Position 2')
-                    print('Successfully connected with Algorithm: ' + str(self.address))
+                    print('Successfully connected with Algorithm PC: ' + str(self.address))
                     retry = False
-                    print(retry)
-
+                
             except Exception as error:
                 print('Connection with Algorithm failed: ' + str(error))
 
@@ -55,7 +45,7 @@ class Algorithm:
                 break
             print("Retrying Algorithm connection...")
 
-    def disconnect(self):
+    def disconnect_algo(self):
         try:
             if self.client_sock is not None:
                 self.client_sock.close()
@@ -66,7 +56,7 @@ class Algorithm:
         except Exception as error:
             print("Algorithm disconnect failed: " + str(error))
 
-    def disconnect_all(self):
+    def disconnect_all_algo(self):
         try:
             if self.client_sock is not None:
                 self.client_sock.close()
@@ -81,42 +71,39 @@ class Algorithm:
         except Exception as error:
             print("Algorithm disconnect failed: " + str(error))
 
-    def read(self):
+    def read_algo(self):
         try:
             message = self.client_sock.recv(ALGORITHM_SOCKET_BUFFER_SIZE).strip()
 
             if len(message) > 0:
-                print('From Algorithm:')
+                print('Message From Algorithm:')
                 print(message)
                 return message
 
             return None
 
         except Exception as error:
-            print('Algorithm read failed: ' + str(error))
+            print('Algorithm read process failed: ' + str(error))
             raise error
 
-    def write(self, message):
+    def write_algo(self, message):
         try:
             print('To Algorithm:')
             print(message)
-            self.client_sock.send(message.encode())
+            self.client_sock.send(message)
 
         except Exception as error:
-            print('Algorithm write failed: ' + str(error))
+            print('Algorithm write process failed: ' + str(error))
             raise error
-
 
 if __name__ == '__main__':
     message = "Hello from Rpi"
-    A = Algorithm()
-    A.connect()
-    print("Connection is successful")
-    A.write(message)
+    A = Algorithm_communicator()
+    A.connect_algo()
+    print("Connection is successful") 
+    A.write_algo(message)
     print("Message successfully sent")
-    A.read()
+    A.read_algo()
     print("Message successfully receved")
-    #  Algorithm().write(message)
+  #  Algorithm().write(message)
     print("Algo script successfully ran.")
-
-
