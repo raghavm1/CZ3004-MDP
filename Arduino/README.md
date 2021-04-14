@@ -1,6 +1,6 @@
 # CZ3004 MDP Arduino
 
-![robot-front](https://github.com/raghavm1/CZ3004-MDP/blob/main/Arduino/robot.jpg)
+![robot-front](https://github.com/raghavm1/CZ3004-MDP/blob/main/Arduino/robot-front.jpg)
 
 ## Components used
 
