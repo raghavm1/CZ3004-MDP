@@ -16,7 +16,7 @@ class Status:
     SHORTEST_PATH = 'shortest path'.encode()
 
 
-class AndroidToArduino:
+class Android-Arduino:
     MOVE_FORWARD = 'U1|'.encode()
     MOVE_BACK = 'B1|'.encode()
     TURN_LEFT = 'L1|'.encode()
@@ -34,22 +34,18 @@ class AndroidToArduino:
     ]
 
 
-class AndroidToAlgorithm:
+class Android-Algorithm:
     START_EXPLORATION = 'SE|'.encode()
     START_SHORTEST_PATH = 'SP|'.encode()
     SEND_ARENA = 'SendArena'.encode()
-<<<<<<< HEAD
-    REQUEST_MDF = 'MDF|'.encode()
-=======
->>>>>>> f2afaf36a2b19dd5407c0283ddd18d146ad6b9d5
     
 
 
-class AndroidToRPi:
-    CALIBRATE_SENSOR = 'SC|'.encode()
+class Android-RPi:
+    CALIBRATE_SENSOR = 'CS|'.encode()
 
 
-class AlgorithmToAndroid:
+class Algorithm-Android:
     MOVE_FORWARD = 'FS'.encode()[0]
     TURN_LEFT = 'L'.encode()[0]
     TURN_RIGHT = 'W'.encode()[0]
@@ -61,12 +57,12 @@ class AlgorithmToAndroid:
     MDF_STRING = 'M'.encode()[0]
 
 
-class AlgorithmToRPi:
+class Algorithm-RPi:
     TAKE_PICTURE = 'C'.encode()[0]
-    EXPLORATION_COMPLETE = 'N'.encode()
+    EXPLORATION_COMPLETE = 'D'.encode()
 
 
-class RPiToAndroid:
+class RPi-Android:
     STATUS_EXPLORATION = '{"status":"exploring"}'.encode()
     STATUS_SHORTEST_PATH = '{"status":"shortest path"}'.encode()
     STATUS_TURN_LEFT = '{"status":"turning left"}'.encode()
@@ -84,12 +80,12 @@ class RPiToAndroid:
     TURN_RIGHT = '{"move":[{"direction":"right"}]}'.encode()
 
 
-class RPiToArduino:
-    CALIBRATE_SENSOR = 'SC|'.encode()
+class RPi-Arduino:
+    CALIBRATE_SENSOR = 'L|A|'.encode()
     START_EXPLORATION = 'E|'.encode()
     START_SHORTEST_PATH = 'F|'.encode()
 
 
-class RPiToAlgorithm:
+class RPi-Algorithm:
     DONE_TAKING_PICTURE = 'D'.encode()
     DONE_IMG_REC = 'I'.encode()
