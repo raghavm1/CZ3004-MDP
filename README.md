@@ -1,4 +1,4 @@
-# CZ/CE 3004 - Multi Disciplinary Project
+# CZ/CE 3004 - Multi Disciplinary Project (AY 2020/21 - Sem 2)
 
 ## Project Objectives
 
@@ -6,11 +6,11 @@ The main objective of this multi-disciplinary project is to build a functional r
 
 The team adopted the common practices in project management to ensure a good control of the project lifecycle, minimized risks and a smooth delivery of the project.
 
-For the functionalities requirements, it will be explained by each respective component sub page.
+For the functionalities requirements, it will be explained by each respective components' sub folder's readme.
 
-Team Structure
-Team Members
-| Algorithm | Arduino | Android | Raspberry Pi |
+## Team Structure
+
+| Algorithm     | Arduino                | Android            | Raspberry Pi       |
 | ------------- | ---------------------- | ------------------ | ------------------ |
-| Chia Aloysius | Mantri Raghav | Wang Lu | Shen Guangxu |
-| Sun Jinghan | Choar Choong Leong (L) | Gwyn Bong Xiao Min | Ng Chen Ee Kenneth |
+| Chia Aloysius | Mantri Raghav          | Wang Lu            | Shen Guangxu       |
+| Sun Jinghan   | Choar Choong Leong (L) | Gwyn Bong Xiao Min | Ng Chen Ee Kenneth |
