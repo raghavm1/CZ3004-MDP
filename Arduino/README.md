@@ -1,13 +1,22 @@
-# Battery B = 6.487V
+# CZ3004 MDP Arduino
 
-## turn angles -> Left 88 ; Right -> 90
+## Components used
 
-rotate right -> rotateDistance = ((16.8
-rotate left -> rotateDistance = ((15.8
+- Arduino Uno
+- Arduino VNH5019 motor driver shield
+- Sharp IR short range (GP2Y0A21YK) and long range (GP2Y0A02YK) proximity sensors
+- Pololu low power 6V DC motors
 
-# Battery B = 6.430V
+## Fastest path
 
-## turn angles -> Left 89 ; Right -> 80
+For running code for fastest path, compile and upload Fastest_Path.ino
 
-rotate right -> rotateDistance = ((16.8
-rotate left -> rotateDistance = ((15.8
+## Exploration
+
+For running code for exploration, compile and upload Exploration.ino
+
+## Sensor calibration
+
+No external libraries have been used for obtaining sensor values. Analog values are read using the serial monitor and are plotted on a graph. After that, a function which fits the curve is used to convert analog readings to centimeter distances.
+
+For sensor calibration, refer to sensor_calibration and upload the code on the arduino uno board. The serial monitor output are the analogRead() values.
