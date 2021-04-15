@@ -1,6 +1,5 @@
-package com.example.mdp3_android;
+package com.example.mdp3_android.pagerfragment;
 
-import android.app.FragmentManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
@@ -16,6 +15,9 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import android.app.DialogFragment;
+
+import com.example.mdp3_android.MainActivity;
+import com.example.mdp3_android.R;
 
 public class ReconfigureFragment extends DialogFragment {
     private static final String TAG = "ReconfigureFragment";
@@ -33,7 +35,7 @@ public class ReconfigureFragment extends DialogFragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         showLog("Entering onCreateView");
         rootView = inflater.inflate(R.layout.activity_reconfigure, container, false);
-        commsView = inflater.inflate(R.layout.activity_comms, container, false);
+        commsView = inflater.inflate(R.layout.activity_message_tab, container, false);
 
         super.onCreate(savedInstanceState);
 

@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.mdp3_android.PageViewModel;
 import com.example.mdp3_android.R;
 
 import androidx.annotation.NonNull;

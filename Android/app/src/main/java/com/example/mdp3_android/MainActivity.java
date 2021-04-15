@@ -14,7 +14,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -27,11 +26,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.mdp3_android.adapters.SectionsPagerAdapter;
-import com.example.mdp3_android.map.GridMap;
-import com.example.mdp3_android.pagerfragment.ControlsTabFragment;
+import com.example.mdp3_android.helper.Constants;
+import com.example.mdp3_android.map.Maze;
 import com.example.mdp3_android.pagerfragment.MapTabFragment;
+import com.example.mdp3_android.pagerfragment.ReconfigureFragment;
 import com.google.android.material.tabs.TabLayout;
-import com.example.mdp3_android.pagerfragment.CommsFragment;
+import com.example.mdp3_android.pagerfragment.MessgaeTabFragment;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -44,9 +44,6 @@ import java.util.UUID;
 //import com.example.mdp3_android.adapters.ViewPagerAdapter;
 import com.example.mdp3_android.bluetooth.BluetoothActivity;
 import com.example.mdp3_android.bluetooth.BluetoothService;
-import com.google.android.material.tabs.TabLayout;
-
-import java.nio.charset.Charset;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -54,27 +51,33 @@ public class MainActivity extends AppCompatActivity {
     private static SharedPreferences sharedPreferences;
     private static SharedPreferences.Editor editor;
     private static Context context;
-    public static String connectedDevice;
 
-    private static GridMap gridMap;
-    static TextView xAxisTextView, yAxisTextView, directionAxisTextView;
-    static TextView robotStatusTextView;
-    static Button f1, f2;
-    Button reconfigure;
     ReconfigureFragment reconfigureFragment = new ReconfigureFragment();
+    private static Maze maze;
 
-
-    BluetoothDevice mBTDevice;
-    private static UUID myUUID;
-    ProgressDialog myDialog;
+    Button reconfigure;
+    static TextView robotStatus;
+    static TextView xAxis, yAxis, directionAxis;
+    static Button f1, f2;
+    BluetoothDevice bluetoothDevice;
+    ProgressDialog progressDialog;
 
     private static boolean autoUpdate = false;
     public static boolean manualUpdateRequest = false;
 
-    private static final String TAG = "Main Activity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        maze = new Maze(this);
+        xAxis = findViewById(R.id.xCoordTextView);
+        yAxis = findViewById(R.id.yCoordTextView);
+        maze = findViewById(R.id.mazeView);
+        directionAxis = findViewById(R.id.directionTextView);
+        robotStatus = findViewById(R.id.robotStatus);
+        f1 =  findViewById(R.id.f1Button);
+        f2 =  findViewById(R.id.f2Button);
+        reconfigure =  findViewById(R.id.configureButton);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -91,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
         MainActivity.context = getApplicationContext();
         this.sharedPreferences();
         editor.putString("message", "");
-        editor.putString("direction","None");
+        editor.putString("direction",Constants.NONE);
         editor.putString("connStatus", "Disconnected");
         editor.commit();
 
@@ -99,14 +102,13 @@ public class MainActivity extends AppCompatActivity {
         printMDFStringButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String message = "Explored : " + GridMap.getPublicMDFExploration();
+                String message = "Explored : " + Maze.getMDFExplorationString();
                 editor = sharedPreferences.edit();
-                editor.putString("message", CommsFragment.getMessageReceivedTextView().getText() + "\n" + message);
+                editor.putString("message", MessgaeTabFragment.getreceivedMsgTxtView().getText() + "\n" + message);
                 editor.commit();
                 refreshMessageReceived();
-                message = "Obstacle : " + GridMap.getPublicMDFObstacle() + "0";
-                showLog(message);
-                editor.putString("message", CommsFragment.getMessageReceivedTextView().getText() + "\n" + message);
+                message = "Obstacle : " + Maze.getMDFObstacleString() + Constants.ZERO;
+                editor.putString("message", MessgaeTabFragment.getreceivedMsgTxtView().getText() + "\n" + message);
                 editor.commit();
                 refreshMessageReceived();
             }
@@ -116,16 +118,11 @@ public class MainActivity extends AppCompatActivity {
         manualAutoToggleBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showLog("Clicked manualAutoToggleBtn");
                 if (manualAutoToggleBtn.getText().equals("MANUAL")) {
                     try {
-                        gridMap.setAutoUpdate(true);
+                        maze.setAutoUpdate(true);
                         autoUpdate = true;
-                        gridMap.toggleCheckedBtn("None");
-//                        MapTabFragment.getUpdateButton().setClickable(false);
-//                        MapTabFragment.getUpdateButton().setTextColor(Color.GRAY);
-                        ControlsTabFragment.getCalibrateButton().setClickable(false);
-                        ControlsTabFragment.getCalibrateButton().setTextColor(Color.GRAY);
+                        maze.toggleCheckedBtn(Constants.NONE);
                         manualAutoToggleBtn.setText("AUTO");
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -134,84 +131,55 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else if (manualAutoToggleBtn.getText().equals("AUTO")) {
                     try {
-                        gridMap.setAutoUpdate(false);
+                        maze.setAutoUpdate(false);
                         autoUpdate = false;
-                        gridMap.toggleCheckedBtn("None");
-//                        MapTabFragment.getUpdateButton().setClickable(true);
-//                        MapTabFragment.getUpdateButton().setTextColor(Color.WHITE);
-                        ControlsTabFragment.getCalibrateButton().setClickable(true);
-                        ControlsTabFragment.getCalibrateButton().setTextColor(Color.WHITE);
+                        maze.toggleCheckedBtn(Constants.NONE);
                         manualAutoToggleBtn.setText("MANUAL");
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
                     Toast.makeText(MainActivity.context, "Manual mode", Toast.LENGTH_SHORT).show();
                 }
-                showLog("Exiting manualAutoToggleBtn");
             }
         });
 
-        // Map
-        gridMap = new GridMap(this);
-        gridMap = findViewById(R.id.mazeView);
-        xAxisTextView = findViewById(R.id.xCoordTextView);
-        yAxisTextView = findViewById(R.id.yCoordTextView);
-        directionAxisTextView = findViewById(R.id.directionTextView);
-
-        // Robot Status
-        robotStatusTextView = findViewById(R.id.robotStatusTextView);
-
-        myDialog = new ProgressDialog(MainActivity.this);
-        myDialog.setMessage("Waiting for the other device to reconnect ...");
-        myDialog.setCancelable(false);
-        myDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
+        progressDialog = new ProgressDialog(MainActivity.this);
+        progressDialog.setMessage("Waiting for the other device to reconnect ...");
+        progressDialog.setCancelable(false);
+        progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 dialogInterface.dismiss();
             }
         });
 
-        f1 = (Button) findViewById(R.id.f1Button);
-        f2 = (Button) findViewById(R.id.f2Button);
-        reconfigure = (Button) findViewById(R.id.configureButton);
-
         if (sharedPreferences.contains("F1")) {
             f1.setContentDescription(sharedPreferences.getString("F1", ""));
-            showLog("set text for f1: " + f1.getContentDescription().toString());
         }
         if (sharedPreferences.contains("F2")) {
             f2.setContentDescription(sharedPreferences.getString("F2", ""));
-            showLog("set text for f2: " + f2.getContentDescription().toString());
         }
 
         f1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showLog("Clicked f1 Button");
                 if (!f1.getContentDescription().toString().equals("empty"))
-                    MainActivity.printMessage(f1.getContentDescription().toString());
-                showLog("f1 Button value: " + f1.getContentDescription().toString());
-                showLog("Exiting f1 Button");
+                    MainActivity.outputMessage(f1.getContentDescription().toString());
             }
         });
 
         f2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showLog("Clicked f2 Button");
                 if (!f2.getContentDescription().toString().equals("empty"))
-                    MainActivity.printMessage(f2.getContentDescription().toString());
-                showLog("f2 Button value: " + f2.getContentDescription().toString());
-                showLog("Exiting f2 Button");
+                    MainActivity.outputMessage(f2.getContentDescription().toString());
             }
         });
 
         reconfigure.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showLog("Clicked reconfigureBtn");
                 reconfigureFragment.show(getFragmentManager(), "Reconfigure Fragment");
-                showLog("Exiting reconfigureBtn");
             }
         });
     }
@@ -232,9 +200,9 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public static TextView getRobotStatusTextView() {  return robotStatusTextView; }
+    public static TextView getRobotStatus() {  return robotStatus; }
 
-    public static GridMap getGridMap() { return gridMap; }
+    public static Maze getMaze() { return maze; }
 
     public static Button getF1() { return f1; }
 
@@ -245,79 +213,61 @@ public class MainActivity extends AppCompatActivity {
         editor = sharedPreferences.edit();
     }
 
-    public static void printMessage(String msg){
-        showLog("Entering printMessage");
+    public static void outputMessage(String msg){
         editor = sharedPreferences.edit();
-        if(BluetoothService.BluetoothConnectionStatus){
+        if(BluetoothService.connStatusFlag){
             byte[] bytes = msg.getBytes(Charset.defaultCharset());
             BluetoothService.write(bytes);
         }
-        editor.putString("message", CommsFragment.getMessageReceivedTextView().getText() + "\n" + msg);
+        editor.putString("message", MessgaeTabFragment.getreceivedMsgTxtView().getText() + "\n" + msg);
         editor.commit();
         refreshMessageReceived();
     }
 
-    public static void printMessage(String name, int x, int y) throws JSONException {
-        showLog("Entering printMessage");
+    public static void outputMessage(String name, int x, int y) throws JSONException {
         sharedPreferences();
 
         JSONObject jsonObject = new JSONObject();
         String message;
-
-        switch(name) {
-//            case "starting":
-            case "waypoint":
-                jsonObject.put(name, name);
-                jsonObject.put("x", x);
-                jsonObject.put("y", y);
-                message = name + " (" + x + "," + y + ")";
-                break;
-            default:
-                message = "Unexpected default for printMessage: " + name;
-                break;
+        
+        if(name.equals("waypoint")){
+            jsonObject.put(name, name);
+            jsonObject.put("x", x);
+            jsonObject.put("y", y);
+            message = name + " (" + x + "," + y + ")";
+        }else{
+            message = "Unexpected Message";
         }
-        editor.putString("message", CommsFragment.getMessageReceivedTextView().getText() + "\n" + message);
+        
+        editor.putString("message", MessgaeTabFragment.getreceivedMsgTxtView().getText() + "\n" + message);
         editor.commit();
-        if (BluetoothService.BluetoothConnectionStatus == true) {
+        if (BluetoothService.connStatusFlag == true) {
             byte[] bytes = message.getBytes(Charset.defaultCharset());
             BluetoothService.write(bytes);
         }
-        showLog("Exiting printMessage");
     }
 
-    public static void refreshMessageReceived() {
-        CommsFragment.getMessageReceivedTextView().setText(sharedPreferences.getString("message", ""));
-    }
-
+   
     public void refreshDirection(String direction) {
-        gridMap.setRobotDirection(direction);
-        directionAxisTextView.setText(sharedPreferences.getString("direction",""));
-        printMessage("Direction is set to " + direction);
+        maze.setRobotDirection(direction);
+        directionAxis.setText(sharedPreferences.getString("direction",""));
+        outputMessage("Direction is set to " + direction);
     }
 
-    public static void refreshLabel() {
-        xAxisTextView.setText(String.valueOf(gridMap.getCurCoord()[0]-1));
-        yAxisTextView.setText(String.valueOf(gridMap.getCurCoord()[1]-1));
-        directionAxisTextView.setText(sharedPreferences.getString("direction",""));
-    }
+   
 
     public static void receiveMessage(String message) {
-        showLog("Entering receiveMessage");
         sharedPreferences();
         editor.putString("message", sharedPreferences.getString("message", "") + "\n" + message);
         editor.commit();
-        showLog("Exiting receiveMessage");
     }
 
-    private static void showLog(String message) {
-        Log.d(TAG, message);
-    }
 
     private static SharedPreferences getSharedPreferences(Context context) {
         return context.getSharedPreferences("Shared Preferences", Context.MODE_PRIVATE);
     }
 
-    private BroadcastReceiver mBroadcastReceiver5 = new BroadcastReceiver() {
+    private BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
             BluetoothDevice mDevice = intent.getParcelableExtra("Device");
@@ -326,45 +276,44 @@ public class MainActivity extends AppCompatActivity {
 
             if(status.equals("connected")){
                 try {
-                    myDialog.dismiss();
+                    progressDialog.dismiss();
                 } catch(NullPointerException e){
                     e.printStackTrace();
                 }
 
-                Log.d(TAG, "mBroadcastReceiver5: Device now connected to "+mDevice.getName());
-                Toast.makeText(MainActivity.this, "Device now connected to "+mDevice.getName(), Toast.LENGTH_SHORT).show();
-                editor.putString("connStatus", "Connected to " + mDevice.getName());
-//                TextView connStatusTextView = findViewById(R.id.connStatusTextView);
-//                connStatusTextView.setText("Connected to " + mDevice.getName());
+                Log.d("Main Activity", "Device is now connected to "+mDevice.getName());
+                Toast.makeText(MainActivity.this, "Device is now connected to "+mDevice.getName(), Toast.LENGTH_SHORT).show();
+                editor.putString("connStatus", "Device is now Connected to " + mDevice.getName());
             }
             else if(status.equals("disconnected")){
-                Log.d(TAG, "mBroadcastReceiver5: Disconnected from "+mDevice.getName());
-                Toast.makeText(MainActivity.this, "Disconnected from "+mDevice.getName(), Toast.LENGTH_SHORT).show();
-//                mBluetoothConnection = new BluetoothConnectionService(MainActivity.this);
-//                mBluetoothConnection.startAcceptThread();
-
+                Log.d("Main Activity", "Device is disconnected from "+mDevice.getName());
+                Toast.makeText(MainActivity.this, "Device is disconnected from "+mDevice.getName(), Toast.LENGTH_SHORT).show();
                 editor.putString("connStatus", "Disconnected");
-//                TextView connStatusTextView = findViewById(R.id.connStatusTextView);
-//                connStatusTextView.setText("Disconnected");
-
-                myDialog.show();
+                progressDialog.show();
             }
             editor.commit();
         }
     };
+    
+    public static void refreshLabel() {
+        xAxis.setText(String.valueOf(maze.getCurCoord()[0]-1));
+        yAxis.setText(String.valueOf(maze.getCurCoord()[1]-1));
+        directionAxis.setText(sharedPreferences.getString("direction",""));
+    }
 
-
+    public static void refreshMessageReceived() {
+        MessgaeTabFragment.getreceivedMsgTxtView().setText(sharedPreferences.getString("message", ""));
+    }
+    
 
     BroadcastReceiver messageReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
             String message = intent.getStringExtra("receivedMessage");
-            showLog("receivedMessage: message --- " + message);
             try {
                 if (message.length() > 7 && message.substring(2,6).equals("grid")) {
                     String resultString = "";
                     String amdString = message.substring(11,message.length()-2);
-                    showLog("amdString: " + amdString);
                     BigInteger hexBigIntegerExplored = new BigInteger(amdString, 16);
                     String exploredString = hexBigIntegerExplored.toString(2);
 
@@ -384,7 +333,7 @@ public class MainActivity extends AppCompatActivity {
                     resultString = hexBigIntegerExplored.toString(16);
 
                     JSONObject amdObject = new JSONObject();
-                    amdObject.put("explored", "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
+                    amdObject.put("explored", Constants.MDF_ALL_F_STRING);
                     amdObject.put("length", amdString.length()*4);
                     amdObject.put("obstacle", resultString);
                     JSONArray amdArray = new JSONArray();
@@ -392,7 +341,6 @@ public class MainActivity extends AppCompatActivity {
                     JSONObject amdMessage = new JSONObject();
                     amdMessage.put("map", amdArray);
                     message = String.valueOf(amdMessage);
-                    showLog("Executed for AMD message, message: " + message);
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -402,21 +350,17 @@ public class MainActivity extends AppCompatActivity {
                 if (message.length() > 8 && message.substring(2,7).equals("image")) {
                     JSONObject jsonObject = new JSONObject(message);
                     JSONArray jsonArray = jsonObject.getJSONArray("image");
-                    gridMap.drawImageNumberCell(jsonArray.getInt(0),jsonArray.getInt(1),jsonArray.getInt(2));
-                    showLog("Image Added for index: " + jsonArray.getInt(0) + "," +jsonArray.getInt(1));
+                    maze.drawImageRec(jsonArray.getInt(0),jsonArray.getInt(1),jsonArray.getInt(2));
                 }
             } catch (JSONException e) {
-                showLog("Adding Image Failed");
             }
 
-            if (gridMap.getAutoUpdate() || MapTabFragment.manualUpdateRequest) {
+            if (maze.getAutoUpdate() || MapTabFragment.manualReq) {
                 try {
-                    gridMap.setReceivedJsonObject(new JSONObject(message));
-                    gridMap.updateMapInformation();
-                    MapTabFragment.manualUpdateRequest = false;
-                    showLog("messageReceiver: try decode successful");
+                    maze.setReceivedJsonObject(new JSONObject(message));
+                    maze.updatemazeInfo();
+                    MapTabFragment.manualReq = false;
                 } catch (JSONException e) {
-                    showLog("messageReceiver: try decode unsuccessful");
                 }
             }
             sharedPreferences();
@@ -434,8 +378,7 @@ public class MainActivity extends AppCompatActivity {
         switch (requestCode){
             case 1:
                 if(resultCode == Activity.RESULT_OK){
-                    mBTDevice = (BluetoothDevice) data.getExtras().getParcelable("mBTDevice");
-                    myUUID = (UUID) data.getSerializableExtra("myUUID");
+                    bluetoothDevice = (BluetoothDevice) data.getExtras().getParcelable("mBTDevice");
                 }
         }
     }
@@ -445,7 +388,7 @@ public class MainActivity extends AppCompatActivity {
         super.onDestroy();
         try{
             LocalBroadcastManager.getInstance(this).unregisterReceiver(messageReceiver);
-            LocalBroadcastManager.getInstance(this).unregisterReceiver(mBroadcastReceiver5);
+            LocalBroadcastManager.getInstance(this).unregisterReceiver(broadcastReceiver);
         } catch(IllegalArgumentException e){
             e.printStackTrace();
         }
@@ -455,7 +398,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onPause(){
         super.onPause();
         try{
-            LocalBroadcastManager.getInstance(this).unregisterReceiver(mBroadcastReceiver5);
+            LocalBroadcastManager.getInstance(this).unregisterReceiver(broadcastReceiver);
         } catch(IllegalArgumentException e){
             e.printStackTrace();
         }
@@ -466,7 +409,7 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         try{
             IntentFilter filter2 = new IntentFilter("ConnectionStatus");
-            LocalBroadcastManager.getInstance(this).registerReceiver(mBroadcastReceiver5, filter2);
+            LocalBroadcastManager.getInstance(this).registerReceiver(broadcastReceiver, filter2);
         } catch(IllegalArgumentException e){
             e.printStackTrace();
         }
@@ -474,10 +417,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
-        showLog("Entering onSaveInstanceState");
         super.onSaveInstanceState(outState);
-
-        outState.putString(TAG, "onSaveInstanceState");
-        showLog("Exiting onSaveInstanceState");
+        outState.putString("Main Activity", "onSaveInstanceState");
     }
 }

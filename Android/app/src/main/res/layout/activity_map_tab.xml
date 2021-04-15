@@ -14,36 +14,6 @@
         tools:layout_editor_absoluteY="81dp">
 
 
-<!--        <Button-->
-<!--            android:id="@+id/updateMapBtn"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginStart="18dp"-->
-<!--            android:layout_marginLeft="24dp"-->
-<!--            android:layout_marginTop="16dp"-->
-<!--            android:clickable="true"-->
-<!--            android:text="UPDATE"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintHorizontal_bias="0.498"-->
-<!--            app:layout_constraintStart_toEndOf="@+id/resetMapBtn"-->
-<!--            app:layout_constraintTop_toTopOf="parent" />-->
-
-            <!--        <Switch-->
-<!--            android:id="@+id/manualAutoToggleBtn"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginStart="64dp"-->
-<!--            android:layout_marginLeft="64dp"-->
-<!--            android:layout_marginTop="24dp"-->
-<!--            android:text="MANUAL"-->
-<!--            android:textColor="@color/dark_green"-->
-<!--            android:textOff="@string/manual"-->
-<!--            android:textOn="@string/auto"-->
-<!--            android:textSize="20sp"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent" />-->
-
-
             <Button
                 android:id="@+id/resetMapBtn"
                 android:layout_width="wrap_content"

@@ -25,7 +25,7 @@
 
                 <view
                     android:id="@+id/mazeView"
-                    class="com.example.mdp3_android.map.GridMap"
+                    class="com.example.mdp3_android.map.Maze"
                     android:layout_width="400dp"
                     android:layout_height="520dp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -50,7 +50,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/robotStatusTextView"
+                    android:id="@+id/robotStatus"
                     android:layout_width="100dp"
                     android:layout_height="60dp"
                     android:layout_marginStart="36dp"
@@ -75,7 +75,7 @@
                     android:textSize="15sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/robotStatusTextView" />
+                    app:layout_constraintTop_toBottomOf="@+id/robotStatus" />
 
                 <TextView
                     android:id="@+id/directionTextView"
@@ -88,7 +88,7 @@
                     android:textColor="@color/red"
                     android:textSize="15sp"
                     app:layout_constraintStart_toEndOf="@+id/directionTitleTextView"
-                    app:layout_constraintTop_toBottomOf="@+id/robotStatusTextView" />
+                    app:layout_constraintTop_toBottomOf="@+id/robotStatus" />
 
                 <TextView
                     android:id="@+id/coordinateTitleTextView"

@@ -38,7 +38,7 @@
         app:layout_constraintTop_toBottomOf="@+id/directionFragmentTitleTextView" />
 
     <Button
-        android:id="@+id/saveBtn"
+        android:id="@+id/saveButton"
         android:layout_width="140dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
@@ -48,12 +48,12 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.619"
-        app:layout_constraintStart_toEndOf="@+id/cancelDirectionBtn"
+        app:layout_constraintStart_toEndOf="@+id/cancelButton"
         app:layout_constraintTop_toBottomOf="@+id/directionDropdownSpinner"
         app:layout_constraintVertical_bias="0.049" />
 
     <Button
-        android:id="@+id/cancelDirectionBtn"
+        android:id="@+id/cancelButton"
         android:layout_width="140dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"

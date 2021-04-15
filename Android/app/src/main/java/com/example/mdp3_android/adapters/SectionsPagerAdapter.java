@@ -9,7 +9,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.example.mdp3_android.R;
-import com.example.mdp3_android.pagerfragment.CommsFragment;
+import com.example.mdp3_android.pagerfragment.MessgaeTabFragment;
 import com.example.mdp3_android.pagerfragment.ControlsTabFragment;
 import com.example.mdp3_android.pagerfragment.MapTabFragment;
 import com.example.mdp3_android.pagerfragment.PlaceholderFragment;
@@ -39,7 +39,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
             case 1:
                 return ControlsTabFragment.newInstance(position+1);
             case 2:
-                return CommsFragment.newInstance(position +1);
+                return MessgaeTabFragment.newInstance(position +1);
             default:
                 return PlaceholderFragment.newInstance(position + 1);
         }

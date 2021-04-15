@@ -1,4 +1,4 @@
-package com.example.mdp3_android;
+package com.example.mdp3_android.pagerfragment;
 
 import androidx.arch.core.util.Function;
 import androidx.lifecycle.LiveData;
@@ -12,7 +12,7 @@ public class PageViewModel extends ViewModel {
     private LiveData<String> mText = Transformations.map(mIndex, new Function<Integer, String>() {
         @Override
         public String apply(Integer input) {
-            return "Hello from section: " + input;
+            return "This is: " + input;
         }
     });
 

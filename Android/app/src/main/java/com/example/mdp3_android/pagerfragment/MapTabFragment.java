@@ -1,52 +1,41 @@
 package com.example.mdp3_android.pagerfragment;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.Switch;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import com.example.mdp3_android.MainActivity;
 import com.example.mdp3_android.R;
-import com.example.mdp3_android.PageViewModel;
-import com.example.mdp3_android.map.GridMap;
-import com.example.mdp3_android.pagerfragment.ControlsTabFragment;
+import com.example.mdp3_android.map.Maze;
+import com.example.mdp3_android.helper.Constants;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 public class MapTabFragment extends Fragment {
-    private static final String ARG_SECTION_NUMBER = "section_number";
-    private static final String TAG = "MapFragment";
 
+    public static boolean manualReq = false;
     private PageViewModel pageViewModel;
+    Maze maze;
 
-    Button resetMapBtn, mdfButton;
-    static Button updateButton;
-    ImageButton directionChangeImageBtn, exploredImageBtn, obstacleImageBtn, clearImageBtn;
-    ToggleButton setStartPointToggleBtn, setWaypointToggleBtn;
-//    Switch manualAutoToggleBtn;
-    GridMap gridMap;
-    private static boolean autoUpdate = false;
-    public static boolean manualUpdateRequest = false;
+    ImageButton changeDirectionButton, explorationButton, obstacleButton, clearButton;
+    ToggleButton startPointButton, wayPointButton;
+    Button mapResetButton, mdfButton;
+    static Button updateStaticMDFButton;
 
-    // Fragment Constructor
+
     public static MapTabFragment newInstance(int index) {
         MapTabFragment fragment = new MapTabFragment();
         Bundle bundle = new Bundle();
-        bundle.putInt(ARG_SECTION_NUMBER, index);
+        bundle.putInt(Constants.SECTION_NUMBER, index);
         fragment.setArguments(bundle);
         return fragment;
     }
@@ -57,7 +46,7 @@ public class MapTabFragment extends Fragment {
         pageViewModel = ViewModelProviders.of(this).get(PageViewModel.class);
         int index = 1;
         if (getArguments() != null) {
-            index = getArguments().getInt(ARG_SECTION_NUMBER);
+            index = getArguments().getInt(Constants.SECTION_NUMBER);
         }
         pageViewModel.setIndex(index);
     }
@@ -65,170 +54,86 @@ public class MapTabFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View root = inflater.inflate(R.layout.activity_map, container, false);
+        View root = inflater.inflate(R.layout.activity_map_tab, container, false);
 
-        gridMap = MainActivity.getGridMap();
+        maze = MainActivity.getMaze();
         final RobotDirectionFragment robotDirectionFragment = new RobotDirectionFragment();
 
-        // Control Button
-        resetMapBtn = root.findViewById(R.id.resetMapBtn);
-        setStartPointToggleBtn = root.findViewById(R.id.setStartPointToggleBtn);
-        setWaypointToggleBtn = root.findViewById(R.id.setWayPointToggleBtn);
-        directionChangeImageBtn = root.findViewById(R.id.changeDirectionImgBtn);
-        exploredImageBtn = root.findViewById(R.id.exploredImgBtn);
-        obstacleImageBtn = root.findViewById(R.id.obstaclesImgBtn);
-        clearImageBtn = root.findViewById(R.id.clearImgBtn);
-//        manualAutoToggleBtn = root.findViewById(R.id.manualAutoToggleBtn);
-        updateButton = root.findViewById(R.id.updateBtn);
+        changeDirectionButton = root.findViewById(R.id.changeDirectionImgBtn);
+        explorationButton = root.findViewById(R.id.exploredImgBtn);
+        obstacleButton = root.findViewById(R.id.obstaclesImgBtn);
+        clearButton = root.findViewById(R.id.clearImgBtn);
+        startPointButton = root.findViewById(R.id.setStartPointToggleBtn);
+        wayPointButton = root.findViewById(R.id.setWayPointToggleBtn);
+        updateStaticMDFButton = root.findViewById(R.id.updateBtn);
         mdfButton = root.findViewById(R.id.mdfBtn);
-
-        // Button Listener
-        resetMapBtn.setOnClickListener(new View.OnClickListener() {
+        mapResetButton = root.findViewById(R.id.resetMapBtn);
+        
+        mapResetButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showLog("Clicked resetMapBtn");
-                showToast("Reseting map...");
-                gridMap.resetMap();
+                maze.resetMaze();
             }
         });
 
-        setStartPointToggleBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showLog("Clicked setStartPointToggleBtn");
-                if (setStartPointToggleBtn.getText().equals("STARTING POINT"))
-                    showToast("Cancelled selecting starting point");
-                else if (setStartPointToggleBtn.getText().equals("CANCEL") && !gridMap.getAutoUpdate()) {
-                    showToast("Please select starting point");
-                    gridMap.setStartCoordStatus(true);
-                    gridMap.toggleCheckedBtn("setStartPointToggleBtn");
-                } else
-                    showToast("Please select manual mode");
-                showLog("Exiting setStartPointToggleBtn");
-            }
-        });
 
-        setWaypointToggleBtn.setOnClickListener(new View.OnClickListener() {
+        explorationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showLog("Clicked setWaypointToggleBtn");
-                if (setWaypointToggleBtn.getText().equals("WAYPOINT"))
-                    showToast("Cancelled selecting waypoint");
-                else if (setWaypointToggleBtn.getText().equals("CANCEL")) {
-                    showToast("Please select waypoint");
-                    gridMap.setWaypointStatus(true);
-                    gridMap.toggleCheckedBtn("setWaypointToggleBtn");
+                if (!maze.getExploredStatus()) {
+                    showToast("Please mark a cell");
+                    maze.setExploredStatus(true);
+                    maze.toggleCheckedBtn("explorationButton");
                 }
-                else
-                    showToast("Please select manual mode");
-                showLog("Exiting setWaypointToggleBtn");
+                else if (maze.getExploredStatus())
+                    maze.setSetObstacleStatus(false);
             }
         });
 
-        directionChangeImageBtn.setOnClickListener(new View.OnClickListener() {
+        obstacleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showLog("Clicked directionChangeImageBtn");
+                if (!maze.getSetObstacleStatus()) {
+                    showToast("Please mark a obstacle");
+                    maze.setSetObstacleStatus(true);
+                    maze.toggleCheckedBtn("obstacleButton");
+                }
+                else if (maze.getSetObstacleStatus())
+                    maze.setSetObstacleStatus(false);
+            }
+        });
+
+        changeDirectionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
                 robotDirectionFragment.show(getActivity().getFragmentManager(), "Direction Fragment");
-                showLog("Exiting directionChangeImageBtn");
             }
         });
 
-        exploredImageBtn.setOnClickListener(new View.OnClickListener() {
+        clearButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showLog("Clicked exploredImageBtn");
-                if (!gridMap.getExploredStatus()) {
-                    showToast("Please check cell");
-                    gridMap.setExploredStatus(true);
-                    gridMap.toggleCheckedBtn("exploredImageBtn");
+                if (!maze.getUnSetCellStatus()) {
+                    showToast("Please remove a cell");
+                    maze.setUnSetCellStatus(true);
+                    maze.toggleCheckedBtn("clearButton");
                 }
-                else if (gridMap.getExploredStatus())
-                    gridMap.setSetObstacleStatus(false);
-                showLog("Exiting exploredImageBtn");
+                else if (maze.getUnSetCellStatus())
+                    maze.setUnSetCellStatus(false);
             }
         });
 
-        obstacleImageBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showLog("Clicked obstacleImageBtn");
-                if (!gridMap.getSetObstacleStatus()) {
-                    showToast("Please plot obstacles");
-                    gridMap.setSetObstacleStatus(true);
-                    gridMap.toggleCheckedBtn("obstacleImageBtn");
-                }
-                else if (gridMap.getSetObstacleStatus())
-                    gridMap.setSetObstacleStatus(false);
-                showLog("Exiting obstacleImageBtn");
-            }
-        });
 
-        clearImageBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showLog("Clicked clearImageBtn");
-                if (!gridMap.getUnSetCellStatus()) {
-                    showToast("Please remove cells");
-                    gridMap.setUnSetCellStatus(true);
-                    gridMap.toggleCheckedBtn("clearImageBtn");
-                }
-                else if (gridMap.getUnSetCellStatus())
-                    gridMap.setUnSetCellStatus(false);
-                showLog("Exiting clearImageBtn");
-            }
-        });
-
-//        manualAutoToggleBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                showLog("Clicked manualAutoToggleBtn");
-//                if (manualAutoToggleBtn.getText().equals("MANUAL")) {
-//                    try {
-//                        gridMap.setAutoUpdate(true);
-//                        autoUpdate = true;
-//                        gridMap.toggleCheckedBtn("None");
-//                        updateButton.setClickable(false);
-//                        updateButton.setTextColor(Color.GRAY);
-//                        ControlsTabFragment.getCalibrateButton().setClickable(false);
-//                        ControlsTabFragment.getCalibrateButton().setTextColor(Color.GRAY);
-//                        manualAutoToggleBtn.setText("AUTO");
-//                    } catch (JSONException e) {
-//                        e.printStackTrace();
-//                    }
-//                    showToast("AUTO mode");
-//                }
-//                else if (manualAutoToggleBtn.getText().equals("AUTO")) {
-//                    try {
-//                        gridMap.setAutoUpdate(false);
-//                        autoUpdate = false;
-//                        gridMap.toggleCheckedBtn("None");
-//                        updateButton.setClickable(true);
-//                        updateButton.setTextColor(Color.WHITE);
-//                        ControlsTabFragment.getCalibrateButton().setClickable(true);
-//                        ControlsTabFragment.getCalibrateButton().setTextColor(Color.WHITE);
-//                        manualAutoToggleBtn.setText("MANUAL");
-//                    } catch (JSONException e) {
-//                        e.printStackTrace();
-//                    }
-//                    showToast("MANUAL mode");
-//                }
-//                showLog("Exiting manualAutoToggleBtn");
-//            }
-//        });
-
-        updateButton.setOnClickListener(new View.OnClickListener() {
+        updateStaticMDFButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showLog("Clicked updateButton");
-                MainActivity.printMessage("sendArena");
-                manualUpdateRequest = true;
-                showLog("Exiting updateButton");
+                MainActivity.outputMessage("sendArena");
+                manualReq = true;
                 try {
                     String message = "{\"map\":[{\"explored\": \"ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff\",\"length\":304,\"obstacle\":\"000000000000010042038400000000000000030C000000000000021F84000800000000000400\"}]}";
 
-                    gridMap.setReceivedJsonObject(new JSONObject(message));
-                    gridMap.updateMapInformation();
+                    maze.setReceivedJsonObject(new JSONObject(message));
+                    maze.updatemazeInfo();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -238,8 +143,36 @@ public class MapTabFragment extends Fragment {
         mdfButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showLog("Clicked mdfButton");
-                MainActivity.printMessage("MDF|");
+                MainActivity.outputMessage("MDF|");
+            }
+        });
+
+        startPointButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (startPointButton.getText().equals("STARTING POINT"))
+                    showToast("Cancelled");
+                else if (startPointButton.getText().equals("CANCEL") && !maze.getAutoUpdate()) {
+                    showToast("Select robot starting point");
+                    maze.setStartCoordinateStatus(true);
+                    maze.toggleCheckedBtn("startPointButton");
+                } else
+                    showToast("click manual mode");
+            }
+        });
+
+        wayPointButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (wayPointButton.getText().equals("WAYPOINT"))
+                    showToast("Cancelled");
+                else if (wayPointButton.getText().equals("CANCEL")) {
+                    showToast("Select a way point");
+                    maze.setWaypointStatus(true);
+                    maze.toggleCheckedBtn("wayPointButton");
+                }
+                else
+                    showToast("click manual mode");
             }
         });
 
@@ -248,18 +181,12 @@ public class MapTabFragment extends Fragment {
     }
 
 
-
-
-    private void showLog(String message) {
-        Log.d(TAG, message);
-    }
-
     private void showToast(String message) {
         Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
     }
 
-    public static Button getUpdateButton() {
-        return updateButton;
+    public static Button getupdateStaticMDFButton() {
+        return updateStaticMDFButton;
     }
 
 

@@ -21,86 +21,68 @@ import com.example.mdp3_android.R;
 
 public class RobotDirectionFragment extends DialogFragment {
 
-    private static final String TAG = "DirectionFragment";
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
 
-    Button saveBtn, cancelDirectionBtn;
-    String direction = "";
+    Button saveButton, cancelButton;
+    String robotDirection = "";
     View rootView;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        showLog("Entering onCreateView");
         rootView = inflater.inflate(R.layout.activity_robotdirection, container, false);
         super.onCreate(savedInstanceState);
 
-        getDialog().setTitle("Change Direction");
+        getDialog().setTitle("Change robotDirection");
         sharedPreferences = getActivity().getSharedPreferences("Shared Preferences", Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
 
-        saveBtn = rootView.findViewById(R.id.saveBtn);
-        cancelDirectionBtn = rootView.findViewById(R.id.cancelDirectionBtn);
+        saveButton = rootView.findViewById(R.id.saveButton);
+        cancelButton = rootView.findViewById(R.id.cancelButton);
 
-        direction = sharedPreferences.getString("direction","");
+        robotDirection = sharedPreferences.getString("robotDirection","");
 
         if (savedInstanceState != null)
-            direction = savedInstanceState.getString("direction");
+            robotDirection = savedInstanceState.getString("robotDirection");
 
 
         final Spinner spinner = (Spinner) rootView.findViewById(R.id.directionDropdownSpinner);
-        // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(),
                 R.array.planets_array, android.R.layout.simple_spinner_item);
-        // Specify the layout to use when the list of choices appears
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        // Apply the adapter to the spinner
         spinner.setAdapter(adapter);
 
-        saveBtn.setOnClickListener(new View.OnClickListener() {
+        cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showLog("Clicked saveBtn");
-                String direction = spinner.getSelectedItem().toString();
-                editor.putString("direction",direction);
-                ((MainActivity)getActivity()).refreshDirection(direction);
-                Toast.makeText(getActivity(), "Saving direction...", Toast.LENGTH_SHORT).show();
-                showLog("Exiting saveBtn");
+                getDialog().dismiss();
+            }
+        });
+
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String robotDirection = spinner.getSelectedItem().toString();
+                editor.putString("robotDirection",robotDirection);
+                ((MainActivity)getActivity()).refreshDirection(robotDirection);
                 editor.commit();
                 getDialog().dismiss();
             }
         });
 
-        cancelDirectionBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showLog("Clicked cancelDirectionBtn");
-                showLog( "Exiting cancelDirectionBtn");
-                getDialog().dismiss();
-            }
-        });
-        showLog("Exiting onCreateView");
         return rootView;
     }
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
-        showLog("Entering onSaveInstanceState");
         super.onSaveInstanceState(outState);
-        saveBtn = rootView.findViewById(R.id.saveBtn);
-        showLog("Exiting onSaveInstanceState");
-        outState.putString(TAG, direction);
+        saveButton = rootView.findViewById(R.id.saveButton);
+        outState.putString("RobotrobotDirectionFragment", robotDirection);
     }
 
     @Override
     public void onDismiss(DialogInterface dialog) {
-        showLog("Entering onDismiss");
         super.onDismiss(dialog);
-        showLog("Exiting onDismiss");
-    }
-
-    private void showLog(String message) {
-        Log.d(TAG, message);
     }
 }

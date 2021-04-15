@@ -76,18 +76,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/backImgBtn" />
 
-    <Button
-        android:id="@+id/calibrateBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_marginTop="8dp"
-        android:clickable="true"
-        android:text="Calibrate"
-        android:textColor="@color/white"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toStartOf="@+id/horizontalLineControl"
-        app:layout_constraintStart_toEndOf="@+id/phoneTiltSwitch"
-        app:layout_constraintTop_toBottomOf="@+id/backImgBtn" />
 
     <View
         android:id="@+id/verticalLineControl"
