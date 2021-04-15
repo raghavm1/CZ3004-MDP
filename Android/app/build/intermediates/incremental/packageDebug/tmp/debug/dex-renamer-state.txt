@@ -1,0 +1,4 @@
+#Fri Feb 19 22:03:28 SGT 2021
+base.0=/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/intermediates/dex/debug/mergeDexDebug/classes.dex
+path.0=classes.dex
+renamed.0=classes.dex

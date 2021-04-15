@@ -1,0 +1,330 @@
+[
+    {
+        "merged": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/intermediates/res/merged/debug/drawable-hdpi_ic_top_menu.png.flat",
+        "source": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/generated/res/pngs/debug/drawable-hdpi/ic_top_menu.png"
+    },
+    {
+        "merged": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/intermediates/res/merged/debug/drawable_toggle_off.xml.flat",
+        "source": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/src/main/res/drawable/toggle_off.xml"
+    },
+    {
+        "merged": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/intermediates/res/merged/debug/mipmap-xhdpi_ic_launcher_round.png.flat",
+        "source": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/intermediates/res/merged/debug/drawable-xxxhdpi_ic_launcher_background.png.flat",
+        "source": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/generated/res/pngs/debug/drawable-xxxhdpi/ic_launcher_background.png"
+    },
+    {
+        "merged": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/intermediates/res/merged/debug/layout_activity_controls.xml.flat",
+        "source": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/src/main/res/layout/activity_controls.xml"
+    },
+    {
+        "merged": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/intermediates/res/merged/debug/drawable-hdpi_ic_back_arrow.png.flat",
+        "source": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/generated/res/pngs/debug/drawable-hdpi/ic_back_arrow.png"
+    },
+    {
+        "merged": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/intermediates/res/merged/debug/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/intermediates/res/merged/debug/drawable-xhdpi_ic_launcher_background.png.flat",
+        "source": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/generated/res/pngs/debug/drawable-xhdpi/ic_launcher_background.png"
+    },
+    {
+        "merged": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/intermediates/res/merged/debug/drawable-hdpi_ic_launcher_background.png.flat",
+        "source": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/generated/res/pngs/debug/drawable-hdpi/ic_launcher_background.png"
+    },
+    {
+        "merged": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/intermediates/res/merged/debug/drawable-xxhdpi_ic_bluetooth.png.flat",
+        "source": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/generated/res/pngs/debug/drawable-xxhdpi/ic_bluetooth.png"
+    },
+    {
+        "merged": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/intermediates/res/merged/debug/drawable-hdpi_ic_bluetooth.png.flat",
+        "source": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/generated/res/pngs/debug/drawable-hdpi/ic_bluetooth.png"
+    },
+    {
+        "merged": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/intermediates/res/merged/debug/layout_activity_robotdirection.xml.flat",
+        "source": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/src/main/res/layout/activity_robotdirection.xml"
+    },
+    {
+        "merged": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/intermediates/res/merged/debug/drawable-hdpi_ic_refresh_list.png.flat",
+        "source": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/generated/res/pngs/debug/drawable-hdpi/ic_refresh_list.png"
+    },
+    {
+        "merged": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/intermediates/res/merged/debug/drawable-xxxhdpi_ic_refresh_list.png.flat",
+        "source": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/generated/res/pngs/debug/drawable-xxxhdpi/ic_refresh_list.png"
+    },
+    {
+        "merged": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/intermediates/res/merged/debug/drawable_ic_arrow_up.png.flat",
+        "source": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/src/main/res/drawable/ic_arrow_up.png"
+    },
+    {
+        "merged": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/intermediates/res/merged/debug/drawable_delete.png.flat",
+        "source": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/src/main/res/drawable/delete.png"
+    },
+    {
+        "merged": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/intermediates/res/merged/debug/drawable-mdpi_ic_top_menu.png.flat",
+        "source": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/generated/res/pngs/debug/drawable-mdpi/ic_top_menu.png"
+    },
+    {
+        "merged": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/intermediates/res/merged/debug/drawable-mdpi_ic_refresh_list.png.flat",
+        "source": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/generated/res/pngs/debug/drawable-mdpi/ic_refresh_list.png"
+    },
+    {
+        "merged": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/intermediates/res/merged/debug/drawable-anydpi-v21_ic_launcher_background.xml.flat",
+        "source": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/generated/res/pngs/debug/drawable-anydpi-v21/ic_launcher_background.xml"
+    },
+    {
+        "merged": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/intermediates/res/merged/debug/drawable-xxxhdpi_ic_top_menu.png.flat",
+        "source": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/generated/res/pngs/debug/drawable-xxxhdpi/ic_top_menu.png"
+    },
+    {
+        "merged": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/intermediates/res/merged/debug/drawable-ldpi_ic_top_menu.png.flat",
+        "source": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/generated/res/pngs/debug/drawable-ldpi/ic_top_menu.png"
+    },
+    {
+        "merged": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/intermediates/res/merged/debug/drawable-xxhdpi_ic_refresh_list.png.flat",
+        "source": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/generated/res/pngs/debug/drawable-xxhdpi/ic_refresh_list.png"
+    },
+    {
+        "merged": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/intermediates/res/merged/debug/drawable_tankright.png.flat",
+        "source": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/src/main/res/drawable/tankright.png"
+    },
+    {
+        "merged": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/intermediates/res/merged/debug/drawable-xxhdpi_ic_launcher_background.png.flat",
+        "source": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/generated/res/pngs/debug/drawable-xxhdpi/ic_launcher_background.png"
+    },
+    {
+        "merged": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/intermediates/res/merged/debug/drawable_toggle_button_selector.xml.flat",
+        "source": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/src/main/res/drawable/toggle_button_selector.xml"
+    },
+    {
+        "merged": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/intermediates/res/merged/debug/drawable-xhdpi_ic_top_menu.png.flat",
+        "source": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/generated/res/pngs/debug/drawable-xhdpi/ic_top_menu.png"
+    },
+    {
+        "merged": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/intermediates/res/merged/debug/drawable_rounded_corner.xml.flat",
+        "source": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/src/main/res/drawable/rounded_corner.xml"
+    },
+    {
+        "merged": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/intermediates/res/merged/debug/drawable_tankleft.png.flat",
+        "source": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/src/main/res/drawable/tankleft.png"
+    },
+    {
+        "merged": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/intermediates/res/merged/debug/drawable-anydpi-v21_ic_bluetooth.xml.flat",
+        "source": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/generated/res/pngs/debug/drawable-anydpi-v21/ic_bluetooth.xml"
+    },
+    {
+        "merged": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/intermediates/res/merged/debug/layout_activity_main.xml.flat",
+        "source": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/src/main/res/layout/activity_main.xml"
+    },
+    {
+        "merged": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/intermediates/res/merged/debug/drawable-xxhdpi_ic_back_arrow.png.flat",
+        "source": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/generated/res/pngs/debug/drawable-xxhdpi/ic_back_arrow.png"
+    },
+    {
+        "merged": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/intermediates/res/merged/debug/drawable_ic_send.png.flat",
+        "source": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/src/main/res/drawable/ic_send.png"
+    },
+    {
+        "merged": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/intermediates/res/merged/debug/drawable_tankdown.png.flat",
+        "source": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/src/main/res/drawable/tankdown.png"
+    },
+    {
+        "merged": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/intermediates/res/merged/debug/drawable-ldpi_ic_launcher_background.png.flat",
+        "source": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/generated/res/pngs/debug/drawable-ldpi/ic_launcher_background.png"
+    },
+    {
+        "merged": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/intermediates/res/merged/debug/menu_bluetooth_menu.xml.flat",
+        "source": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/src/main/res/menu/bluetooth_menu.xml"
+    },
+    {
+        "merged": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/intermediates/res/merged/debug/drawable_add.png.flat",
+        "source": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/src/main/res/drawable/add.png"
+    },
+    {
+        "merged": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/intermediates/res/merged/debug/mipmap-mdpi_ic_launcher.png.flat",
+        "source": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/src/main/res/mipmap-mdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/intermediates/res/merged/debug/mipmap-xxhdpi_ic_launcher_round.png.flat",
+        "source": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/intermediates/res/merged/debug/drawable_rectangle_border.xml.flat",
+        "source": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/src/main/res/drawable/rectangle_border.xml"
+    },
+    {
+        "merged": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/intermediates/res/merged/debug/drawable-anydpi-v24_ic_launcher_foreground.xml.flat",
+        "source": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/generated/res/pngs/debug/drawable-anydpi-v24/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/intermediates/res/merged/debug/drawable-ldpi_ic_back_arrow.png.flat",
+        "source": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/generated/res/pngs/debug/drawable-ldpi/ic_back_arrow.png"
+    },
+    {
+        "merged": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/intermediates/res/merged/debug/layout_activity_reconfigure.xml.flat",
+        "source": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/src/main/res/layout/activity_reconfigure.xml"
+    },
+    {
+        "merged": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/intermediates/res/merged/debug/drawable_tankup.png.flat",
+        "source": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/src/main/res/drawable/tankup.png"
+    },
+    {
+        "merged": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/intermediates/res/merged/debug/menu_main_menu.xml.flat",
+        "source": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/src/main/res/menu/main_menu.xml"
+    },
+    {
+        "merged": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/intermediates/res/merged/debug/drawable-ldpi_ic_bluetooth.png.flat",
+        "source": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/generated/res/pngs/debug/drawable-ldpi/ic_bluetooth.png"
+    },
+    {
+        "merged": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/intermediates/res/merged/debug/drawable_ic_arrow_right.png.flat",
+        "source": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/src/main/res/drawable/ic_arrow_right.png"
+    },
+    {
+        "merged": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/intermediates/res/merged/debug/drawable-anydpi-v21_ic_refresh_list.xml.flat",
+        "source": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/generated/res/pngs/debug/drawable-anydpi-v21/ic_refresh_list.xml"
+    },
+    {
+        "merged": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/intermediates/res/merged/debug/mipmap-mdpi_ic_launcher_round.png.flat",
+        "source": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/src/main/res/mipmap-mdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/intermediates/res/merged/debug/mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/src/main/res/mipmap-xhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/intermediates/res/merged/debug/drawable-xhdpi_ic_back_arrow.png.flat",
+        "source": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/generated/res/pngs/debug/drawable-xhdpi/ic_back_arrow.png"
+    },
+    {
+        "merged": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/intermediates/res/merged/debug/drawable_reload.png.flat",
+        "source": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/src/main/res/drawable/reload.png"
+    },
+    {
+        "merged": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/intermediates/res/merged/debug/drawable-xhdpi_ic_bluetooth.png.flat",
+        "source": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/generated/res/pngs/debug/drawable-xhdpi/ic_bluetooth.png"
+    },
+    {
+        "merged": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/intermediates/res/merged/debug/drawable-mdpi_ic_back_arrow.png.flat",
+        "source": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/generated/res/pngs/debug/drawable-mdpi/ic_back_arrow.png"
+    },
+    {
+        "merged": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/intermediates/res/merged/debug/drawable_ic_arrow_error.png.flat",
+        "source": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/src/main/res/drawable/ic_arrow_error.png"
+    },
+    {
+        "merged": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/intermediates/res/merged/debug/drawable-xxhdpi_ic_top_menu.png.flat",
+        "source": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/generated/res/pngs/debug/drawable-xxhdpi/ic_top_menu.png"
+    },
+    {
+        "merged": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/intermediates/res/merged/debug/mipmap-hdpi_ic_launcher_round.png.flat",
+        "source": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/src/main/res/mipmap-hdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/intermediates/res/merged/debug/layout_activity_map.xml.flat",
+        "source": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/src/main/res/layout/activity_map.xml"
+    },
+    {
+        "merged": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/intermediates/res/merged/debug/drawable-anydpi-v21_ic_back_arrow.xml.flat",
+        "source": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/generated/res/pngs/debug/drawable-anydpi-v21/ic_back_arrow.xml"
+    },
+    {
+        "merged": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/intermediates/res/merged/debug/drawable_check_play_toggle.xml.flat",
+        "source": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/src/main/res/drawable/check_play_toggle.xml"
+    },
+    {
+        "merged": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi_ic_launcher_round.png.flat",
+        "source": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/intermediates/res/merged/debug/mipmap-hdpi_ic_launcher.png.flat",
+        "source": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/src/main/res/mipmap-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/intermediates/res/merged/debug/drawable_ic_arrow_left.png.flat",
+        "source": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/src/main/res/drawable/ic_arrow_left.png"
+    },
+    {
+        "merged": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/intermediates/res/merged/debug/drawable_stopbutton.png.flat",
+        "source": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/src/main/res/drawable/stopbutton.png"
+    },
+    {
+        "merged": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/intermediates/res/merged/debug/layout_fragment_main.xml.flat",
+        "source": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/src/main/res/layout/fragment_main.xml"
+    },
+    {
+        "merged": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/intermediates/res/merged/debug/layout_lv_devices_list.xml.flat",
+        "source": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/src/main/res/layout/lv_devices_list.xml"
+    },
+    {
+        "merged": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/intermediates/res/merged/debug/drawable_block.png.flat",
+        "source": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/src/main/res/drawable/block.png"
+    },
+    {
+        "merged": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/intermediates/res/merged/debug/drawable_ic_arrow_down.png.flat",
+        "source": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/src/main/res/drawable/ic_arrow_down.png"
+    },
+    {
+        "merged": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/intermediates/res/merged/debug/drawable-ldpi_ic_refresh_list.png.flat",
+        "source": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/generated/res/pngs/debug/drawable-ldpi/ic_refresh_list.png"
+    },
+    {
+        "merged": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/intermediates/res/merged/debug/drawable_direction.png.flat",
+        "source": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/src/main/res/drawable/direction.png"
+    },
+    {
+        "merged": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/intermediates/res/merged/debug/layout_activity_comms.xml.flat",
+        "source": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/src/main/res/layout/activity_comms.xml"
+    },
+    {
+        "merged": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/intermediates/res/merged/debug/layout_activity_bluetooth.xml.flat",
+        "source": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/src/main/res/layout/activity_bluetooth.xml"
+    },
+    {
+        "merged": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/intermediates/res/merged/debug/drawable_toggle_on.xml.flat",
+        "source": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/src/main/res/drawable/toggle_on.xml"
+    },
+    {
+        "merged": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/intermediates/res/merged/debug/mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/intermediates/res/merged/debug/drawable-xxxhdpi_ic_back_arrow.png.flat",
+        "source": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/generated/res/pngs/debug/drawable-xxxhdpi/ic_back_arrow.png"
+    },
+    {
+        "merged": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/intermediates/res/merged/debug/drawable-mdpi_ic_launcher_background.png.flat",
+        "source": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/generated/res/pngs/debug/drawable-mdpi/ic_launcher_background.png"
+    },
+    {
+        "merged": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/intermediates/res/merged/debug/drawable_playbutton.png.flat",
+        "source": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/src/main/res/drawable/playbutton.png"
+    },
+    {
+        "merged": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/intermediates/res/merged/debug/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/intermediates/res/merged/debug/drawable-xxxhdpi_ic_bluetooth.png.flat",
+        "source": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/generated/res/pngs/debug/drawable-xxxhdpi/ic_bluetooth.png"
+    },
+    {
+        "merged": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/intermediates/res/merged/debug/drawable-mdpi_ic_bluetooth.png.flat",
+        "source": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/generated/res/pngs/debug/drawable-mdpi/ic_bluetooth.png"
+    },
+    {
+        "merged": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/intermediates/res/merged/debug/drawable-xhdpi_ic_refresh_list.png.flat",
+        "source": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/generated/res/pngs/debug/drawable-xhdpi/ic_refresh_list.png"
+    },
+    {
+        "merged": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/intermediates/res/merged/debug/drawable-anydpi-v21_ic_top_menu.xml.flat",
+        "source": "/Users/bboyhao/Desktop/CZ3004_WL/MDP3Android/app/build/generated/res/pngs/debug/drawable-anydpi-v21/ic_top_menu.xml"
+    }
+]
