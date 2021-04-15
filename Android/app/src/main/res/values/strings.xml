@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">mdp3_android</string>
+    <string name="device_name">Nexus 5</string>
+    <string name="device_address">BC:F5:AC:33:38:CC</string>
+    <string name="device_status" />
+    <string name="paired_devices_label">Paired Devices</string>
+    <string name="available_devices_label">Available Devices</string>
+
+    <string name="refresh_devices_title">SCAN</string>
+    <string name="bluetooth_activity_name">Bluetooth</string>
+    <string name="type_msg_hint">type something here ..</string>
+
+    <string name="tab_map">Map</string>
+    <string name="tab_control">Controls</string>
+    <string name="tab_message">Message</string>
+
+    <!-- Map -->
+    <string name="manual">MANUAL</string>
+    <string name="auto">AUTO</string>
+    <string name="comma">,</string>
+
+</resources>
